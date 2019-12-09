@@ -1,5 +1,6 @@
-# horizontal-calendar
+# vue-horizontal-calendar
 
+a horizontal calendar component for Vue.js
 ## Project setup
 ```
 npm install
