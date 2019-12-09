@@ -1,11 +1,15 @@
 {
   "name": "vue-horizontal-calendar",
   "version": "0.1.0",
-  "private": true,
+  "description": "a horizontal calendar component for Vue.js",
+  "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lib": "vue-cli-service build --target lib --name vue-horizontal-calendar --dest lib src/components/index.js"
+  },
+  "author": {
+    "name": "jacques1112"
   },
   "dependencies": {
     "core-js": "^3.4.3",

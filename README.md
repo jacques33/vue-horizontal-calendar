@@ -1,24 +1,27 @@
 # vue-horizontal-calendar
 
 a horizontal calendar component for Vue.js
-## Project setup
+
+### Project setup
 ```
-npm install
+npm install vue-horizontal-calendar -S
 ```
 
-### Compiles and hot-reloads for development
+### local import
 ```
-npm run serve
-```
+<template>
+    <div class="demo">
+        <vue-horizontal-calendar></vue-horizontal-calendar>
+    </div>
+</template>
 
-### Compiles and minifies for production
+<script>
+import VueHorizontalCalendar from 'vue-horizontal-calendar';
+export default {
+    components: {
+        VueHorizontalCalendar
+    }
+}
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
+### doc & demos
+[click here](https://shyui-demo.zlzgy.org.cn).
