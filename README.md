@@ -17,6 +17,8 @@ npm install vue-horizontal-calendar -S
 
 <script>
 import VueHorizontalCalendar from 'vue-horizontal-calendar';
+import 'vue-horizontal-calendar/lib/vue-horizontal-calendar.css';
+
 export default {
     components: {
         VueHorizontalCalendar
@@ -24,4 +26,4 @@ export default {
 }
 ```
 ### doc & demos
-[click here](https://shyui-demo.zlzgy.org.cn).
+[click here](https://jacques33.github.io/vue-horizontal-calendar/).

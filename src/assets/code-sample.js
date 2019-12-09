@@ -2,6 +2,7 @@ const list = [
     `<pre class='hljs'><code><span class="hljs-comment">// 局部引入</span>
 &lt;script&gt;
 <span class="hljs-literal">import</span> VueHorizontalCalendar from <span class="hljs-string">'vue-horizontal-calendar'</span>;
+<span class="hljs-literal">import</span><span class="hljs-string"> 'vue-horizontal-calendar/lib/vue-horizontal-calendar.css'</span>;
 <span class="hljs-literal">export</span> <span class="hljs-keyword">default</span> {
     components: {
         VueHorizontalCalendar
