@@ -47,6 +47,7 @@
 </template>
 <script>
 import "@/assets/iconfont.js";
+
 export default {
   name: "vue-horizontal-calendar",
   props: {
@@ -310,7 +311,6 @@ export default {
        * 计算当前显示的第一天 的变化
        * 因为当前function执行中存在异步过程，且动画执行也需要时间，因此延时执行
        */
-
       setTimeout(() => {
         // 数据变更后的部分数据
         let afterChangeX = this.translateX;
@@ -338,7 +338,7 @@ export default {
       }, 300);
 
       // 事件回调，返回滑动事件类型
-      this.$emit("swipeClick", { type: type });
+      this.$emit("swipeClick", type===1?'right':'left');
     },
     // 格式化单个日期的数据
     formatOneDay(day) {
@@ -421,6 +421,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss">
 .horizontal-calendar {
   width: 100%;
@@ -479,13 +480,15 @@ export default {
     left: 0;
     width: 30px;
     height: 30px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAI9JREFUSA29z0sOgCAQA1DGu3EvvBYcToOJxg8g8+l00XT3Uso5b8EpRLQuTlaoWIwxuYAnVs/BwTsGB98YFGxhMLCHQcARZg7+YabgDGYGzmImIAdTg1xMBUowMSjFRKAGY4NajAVaYNOgFTYFWmK/oDU2BBFYF0RhTRCJfUA09gA9sAv0wioYSinpGE61A3XuNgaNuea4AAAAAElFTkSuQmCC);
-    background-size: 100% 100%;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAFN++nkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACoF8tmAAACJklEQVRoBd2ZjXHDIAxGk1536TSdNtM00zSyDw5sBJKQxA93sd1IH4/nOE6bPh+Px+/ngY4vtHIWXrWGF/RgDUcRa4jFUkNWvDbcitAAo6r5rDVgBjAr6n+so5SMC7wWYwHmTYtZAYowqjpnS2Fb9Sz0p0+9vtOfiMdx7ZxwDAUIJXwLUcJoqBZuhkphciiEe16q7PIJE1L36CXdmuBQTC/cViDU47nhhmMQZuKEsyAnfAtSw8UgJYwGW+FqsBZuBrEwKVgKk4PXMCsIYRiyW+cn2PWWPNCyjejOK0OdqXhaKTfeHlDIRmB4whp8A1qDUaAVuAnUBpOBWmA2sBcsBkrB3UAuWA1IBasDW2AzIAY2BwYw7MUfbekk3ONRH4tvzm98XCms//0p/HmDDyisyBMcoZ7gDOoFvkE9wEWoNRiFWoKrUCtwE2oBJkG1wWSoJpgF1QKzoRpgEbQXLIb2gLugUnA3VAJWgXLBalAOWBVKBatDKWATaAtsBq2BTaEY2BxaArtAr2A3aAp2hQIYxs+5892O+mvR1/KkHa+q9VeZI8SuzOzy3Vk4Ew1nYUfhouiOwlXRnYRJojsIs0RXFhaJrijcJbqSsIroCsKqojMLm4jOKGwqOpOwi+gMwq6iI4WHiI4QHirqKTyFqIfwVKKWwlOKWghPLaopvISohvBSoj3CS4pKhJcW5QhvIUoR3kq0JrylaEl4a9EgDPsh/8VLF+B5/A/jzYX1v2DlFgAAAABJRU5ErkJggg==) no-repeat;
+    background-size: 90% 90%;
     p {
       color: #fff;
       font-size: 12px;
       width: 54%;
       text-align: center;
+      line-height: 16px;
+      transform: scale(0.9);
     }
   }
   .date-item-date {

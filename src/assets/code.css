@@ -10,11 +10,11 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   color: #2686ff;
   font-size: 14px;
   border-radius: 6px;
-  overflow: auto;
   line-height: 24px;
   overflow-x: auto;
   -webkit-text-size-adjust: none;
   font-family: "Microsoft Yahei", "Helvetica", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
   }
   
   .hljs,
@@ -25,7 +25,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   .css .hljs-function
   .hljs-preprocessor,
   .hljs-pragma {
-    color: #f8f8f2;
+    color: #666;
   }
   
   .hljs-strongemphasis,
@@ -104,7 +104,7 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   .hljs-params,
   .hljs-class .hljs-title,
   .hljs-aspect .hljs-title {
-    color: #f8f8f2;
+    color: #a7633c;
   }
   
   .hljs-string,
@@ -158,3 +158,6 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
     opacity: 0.5;
   }
   
+  .hljs-property{
+    color: #965cff;
+  }
