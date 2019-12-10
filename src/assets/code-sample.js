@@ -1,5 +1,5 @@
 const list = [
-`<pre class='hljs'><code><span class="hljs-comment">// 局部引入</span>
+`<pre class='hljs'><code><span class="hljs-comment">// import in ***.vue</span>
 &lt;script&gt;
 <span class="hljs-literal">import</span> VueHorizontalCalendar from <span class="hljs-string">'vue-horizontal-calendar'</span>;
 <span class="hljs-literal">export</span> <span class="hljs-keyword">default</span> {
@@ -34,6 +34,7 @@ methods: {
 `<pre class='hljs'><code>&lt;vue-horizontal-calendar  <span class="hljs-variable">swipeSpace=</span><span class="hljs-string">"3"</span>&gt;&lt;/vue-horizontal-calendar&gt;</code></pre>`,
 
 `<pre class='hljs'><code>&lt;vue-horizontal-calendar  <span class="hljs-variable">lang=</span><span class="hljs-string">"en"</span>&gt;&lt;/vue-horizontal-calendar&gt;</code></pre>`,
+`<pre class='hljs'><code>&lt;vue-horizontal-calendar  <span class="hljs-variable">lang=</span><span class="hljs-string">"zh"</span>&gt;&lt;/vue-horizontal-calendar&gt;</code></pre>`,
 
 `<pre class='hljs'><code>&lt;vue-horizontal-calendar
 <span class="hljs-variable">choosedItemColor=</span><span class="hljs-string">"rgb(150, 0, 0)"</span>

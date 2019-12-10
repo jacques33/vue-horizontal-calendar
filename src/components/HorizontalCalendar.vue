@@ -418,6 +418,12 @@ export default {
       }
       return null;
     }
+  },
+  watch:{
+    lang(n){
+      this.lang = n;
+      this.creatList();
+    }
   }
 };
 </script>

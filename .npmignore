@@ -6,4 +6,3 @@ babel.config.js
 .gitignore
 package-lock.json
 vue.config.js
-发布说明.md

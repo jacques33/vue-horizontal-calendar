@@ -1,36 +1,39 @@
 <template>
   <div id="app">
-    <vue-horizontal-calendar :showBorderTop="false" v-on:change="dateChange1"></vue-horizontal-calendar>
-
+    
     <div class="body">
+      <!-- documents -->
       <div class="content">
+        <a class="github-link" target="_blank" href="https://github.com/jacques33/vue-horizontal-calendar"><img src="./assets/github.jpg" alt="github" width="25"></a>
+        <a class="lang-icon" @click="changeLanguage">{{lang}}</a>
         <h2 class="page-title">
           vue-horizontal-calendar
-          <small>  -- Vue.js横向日历组件</small>
+          <small>  -- {{currLang.small_title}}</small>
         </h2>
+        <!-- install -->
         <div class="white-block">
-          <h4>安装</h4>
+          <h4>{{currLang.install}}</h4>
           <pre class="hljs"><span style="color: #5db4e6">npm install vue-horizontal-calendar -S</span></pre>
         </div>
-
+        <!-- import -->
         <div class="white-block">
-          <h4>引入</h4>
+          <h4>{{currLang.import}}</h4>
           <p class="tips">
-            <strong>说明：</strong>当前组件只支持局部引入
+            <strong>{{currLang.description}}：</strong>{{currLang.import_detail}}
           </p>
           <div class="code" v-html="codeList[0]"></div>
         </div>
-
+        <!-- props -->
         <h2 class="preview-title">Props</h2>
         <div class="white-block">
           <table class="api-table" border="0" cellspacing="0" cellpadding="0">
             <thead>
               <tr>
-                <th>参数名</th>
-                <th width="35%">说明</th>
-                <th>类型</th>
-                <th>默认值</th>
-                <th>是否必填</th>
+                <th>{{currLang.prop}}</th>
+                <th width="35%">{{currLang.description}}</th>
+                <th>{{currLang.type}}</th>
+                <th>{{currLang.default}}</th>
+                <th>{{currLang.required}}</th>
               </tr>
             </thead>
             <tbody>
@@ -114,14 +117,14 @@
             </tbody>
           </table>
         </div>
-
+        <!-- slots -->
         <h2 class="preview-title">Slots</h2>
         <div class="white-block">
           <table class="api-table" border="0" cellspacing="0" cellpadding="0">
             <thead>
               <tr>
-                <th>插槽名</th>
-                <th>说明</th>
+                <th>{{currLang.slot}}</th>
+                <th>{{currLang.description}}</th>
               </tr>
             </thead>
             <tbody>
@@ -136,15 +139,15 @@
             </tbody>
           </table>
         </div>
-
+        <!-- events -->
         <h2 class="preview-title">Events</h2>
         <div class="white-block">
           <table class="api-table" border="0" cellspacing="0" cellpadding="0">
             <thead>
               <tr>
-                <th>事件名</th>
-                <th>说明</th>
-                <th width="30%">回调参数</th>
+                <th>{{currLang.event}}</th>
+                <th>{{currLang.description}}</th>
+                <th width="30%">{{currLang.cbArg}}</th>
               </tr>
             </thead>
             <tbody>
@@ -168,7 +171,7 @@
             </tbody>
           </table>
         </div>
-
+        <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
         <!-- 0.2.0 -->
         <div class="white-block change-log">
@@ -198,50 +201,47 @@
             <li>demo页面及示例说明，发布到GitHub</li>
           </ul>
         </div>
-
       </div>
+      <!-- demos -->
       <div class="demos">
-        <h2 class="preview-title">示例1：<span>设置初始化选中日期</span></h2>
-        <p style="text-align:center;line-height:24px;font-size:15px;">{{this.choosedDay2.dateFormat}} 星期{{this.choosedDay2.day}}</p>
-        <vue-horizontal-calendar choosedDate="2019/12/01" v-on:change="dateChange2"></vue-horizontal-calendar>
-        <p class="excample-text">说明：默认的初始化选中日期为‘今天’，可自定义任意日期。</p>
+        <h2 class="preview-title">{{currLang.example}}1：<span>{{currLang.eg1}}</span></h2>
+        <p style="text-align:center;line-height:24px;font-size:15px;">{{this.choosedDay2.dateFormat}}  {{currLang.week}}{{this.choosedDay2.day | weekName}}</p>
+        <vue-horizontal-calendar choosedDate="2019/12/01" :lang="lang=='English'?'zh':'en'" v-on:change="dateChange2"></vue-horizontal-calendar>
+        <p class="excample-text">{{currLang.description + '：' + currLang.eg1_detail}}</p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[1]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">示例2：<span>设置可选日期范围</span></h2>
+        <h2 class="preview-title">{{currLang.example}}2：<span>{{currLang.eg2}}</span></h2>
         <vue-horizontal-calendar
+          :lang="lang=='English'?'zh':'en'"
           minDate="2019/12/01"
           maxDate="2020/12/30"
           v-on:change="dateChange3"
         ></vue-horizontal-calendar>
         <p
           class="excample-text"
-        >说明：
-        <br>1，minDate：最小日期限制；
-        <br>2，maxDate：最大日期限制；
-        <br>3，默认无限制，可左右滑动至任意日期；
-        <br>4，由于当前日历插件是宽度自适应的，所以设置‘maxDate’时，请考虑到右侧最后一个日期可能存在显示不完全的问题；你可以通过设置父组件容器的宽度，来使得最后一个日期显示完整；</p>
+        >{{currLang.description + '：' + currLang.eg2_detail}}</p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[2]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">示例3：<span>设置左右切换的间隔天数</span></h2>
-        <vue-horizontal-calendar swipeSpace="3"></vue-horizontal-calendar>
-        <p class="excample-text">说明：即左右切换按钮，单次滑动的日期天数；默认值为‘7’天</p>
+        <h2 class="preview-title">{{currLang.example}}3：<span>{{currLang.eg3}}</span></h2>
+        <vue-horizontal-calendar swipeSpace="3" :lang="lang=='English'?'zh':'en'"></vue-horizontal-calendar>
+        <p class="excample-text">{{currLang.description + '：' + currLang.eg3_detail}}</p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[3]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">示例4：<span>设置语言</span></h2>
-        <vue-horizontal-calendar lang="en"></vue-horizontal-calendar>
-        <p class="excample-text">说明：默认'zh'(中文)；可选值：'zh','en'</p>
+        <h2 class="preview-title">{{currLang.example}}4：<span>{{currLang.eg4}}</span></h2>
+        <vue-horizontal-calendar :lang="lang=='English'?'en':'zh'"></vue-horizontal-calendar>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
-        <div class="code" v-html="codeList[4]"></div>
+        <div class="code"  v-html="currLangDemo"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">示例5：<span>自定义颜色、样式</span></h2>
+        <h2 class="preview-title">{{currLang.example}}5：<span>{{currLang.eg5}}</span></h2>
         <vue-horizontal-calendar
+          :lang="lang=='English'?'zh':'en'"
           choosedItemColor="rgb(150, 0, 0)"
           todayItemColor="rgb(150, 0, 0, .1)"
           choosedDatePos="center"
@@ -252,20 +252,20 @@
           <img slot="rightIcon" src="./assets/right.jpg" style="width:20px;margin-top:11px" />
         </vue-horizontal-calendar>
         <p class="excample-text">
-          说明：
-          <br />1，choosedItemColor：选中的日期背景色；
-          <br />2，todayItemColor：‘今天’未选中时的背景色；
-          <br />3，sundayText：'周日'的文字自定义（仅在lang='zh'时生效）；
-          <br />4，choosedDatePos：初始化选中日期所在的位置；
-          <br />5，showBorderTop：是否显示日历条顶部的border；
-          <br />6，通过slot自定义左右按钮的样式；
+          {{currLang.description}}：
+          <br />1. <span class="text-blue">choosedItemColor：</span>{{currLang.eg5_detail[0]}}；
+          <br />2. <span class="text-blue">todayItemColor：</span>{{currLang.eg5_detail[1]}}；
+          <br />3. <span class="text-blue">sundayText：</span>{{currLang.eg5_detail[2]}}；
+          <br />4. <span class="text-blue">choosedDatePos：</span>{{currLang.eg5_detail[3]}}；
+          <br />5. <span class="text-blue">showBorderTop：</span>{{currLang.eg5_detail[4]}}；
+          <br />6. {{currLang.eg5_detail[5]}}；
         </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
-        <div class="code" v-html="codeList[5]"></div>
+        <div class="code" v-html="codeList[6]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">示例6：<span>用周历的方式展示</span></h2>
-        <h4 class="week-title">{{currentFirstDay.year + '年' + currentFirstDay.month + '月'}}</h4>
+        <h2 class="preview-title">{{currLang.example}}6：<span>{{currLang.eg6}}</span></h2>
+        <h4 class="week-title">{{currentFirstDay.year + currLang.year + currentFirstDay.month + currLang.month}}</h4>
         <vue-horizontal-calendar
           style="width:410px;margin: 0 auto;"
           swipeSpace="7"
@@ -273,19 +273,20 @@
           sundayText="天"
           :showBorderTop="false"
           :resizeable="false"
+          :lang="lang=='English'?'zh':'en'"
           v-on:change="dateChange5"
           v-on:swipeClick="arrowClick"
           v-on:firstDayChange="firstDayChange"
         ></vue-horizontal-calendar>
         <p class="excample-text">
           说明：
-          <br />1，将组件宽度设为410px；滑动间隔日期设置为7天；周历的外观就做好了；
-          <br />2，自定义一个日历头部的样式，用于显示当前年月数据；
-          <br />3，需要传入当前日期所在周的'周一'的日期作为choosedDate数据，因此需要动态计算该值；
-          <br />4，通过组件提供的'firstDayChange'事件，动态变更当前周所在的年月数据(该事件会返回当前最左侧日期的数据)；
+          <br />1. {{currLang.eg6_detail[0]}}
+          <br />2. {{currLang.eg6_detail[1]}}
+          <br />3. {{currLang.eg6_detail[2]}}
+          <br />4. {{currLang.eg6_detail[3]}}
         </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
-        <div class="code" v-html="codeList[6]"></div>
+        <div class="code" v-html="codeList[7]"></div>
 
       </div>
     </div>
@@ -295,6 +296,7 @@
 <script>
 import VueHorizontalCalendar from "./components/index";
 import codeSample from "./assets/code-sample.js";
+import langBag from "./assets/lang.js";
 import "./assets/code.css";
 
 export default {
@@ -304,6 +306,12 @@ export default {
   },
   data() {
     return {
+      // 语言
+      lang: 'English',
+      chinese: langBag.zh,
+      english: langBag.en,
+      currLang: langBag.zh,
+
       codeList: codeSample,
 
       choosedDay1: {
@@ -361,6 +369,16 @@ export default {
       } else {
         dom.nextElementSibling.style.display = "none";
       }
+    },
+    // 切换语言
+    changeLanguage(){
+      if(this.lang === 'English'){
+        this.lang = '中文';
+        this.currLang = this.english
+      }else{
+        this.lang = 'English';
+        this.currLang = this.chinese
+      }
     }
   },
   computed: {
@@ -372,6 +390,28 @@ export default {
         today.getTime() - (today_weekCode - 1) * 1000 * 3600 * 24;
       let monday = new Date(monday_timestamp);
       return monday.getFullYear() + "/" + (monday.getMonth() + 1) + "/" + monday.getDate();
+    },
+
+    currLangDemo(){
+      if(this.lang === 'English'){
+        return this.codeList[4]
+      }else{
+        return this.codeList[5]
+      }
+    }
+  },
+  filters: {
+    weekName: week =>{
+      const dirt_en = {
+        "Su": "Sunday",
+        "Mo": "Monday",
+        "Tu": "Tuesday",
+        "We": "Wednesday",
+        "Th": "Thursday",
+        "Fr": "Friday",
+        "Sa": "Saturday"
+      };
+      return dirt_en[week]?dirt_en[week]:week
     }
   }
 };
@@ -411,6 +451,9 @@ body {
 div {
   box-sizing: border-box;
 }
+span.text-blue {
+    color: #a0c6ff;
+}
 #app {
   font-family: "Microsoft Yahei", "Helvetica", "Lato", "Helvetica Neue",
     Helvetica, Arial, sans-serif;
@@ -421,11 +464,45 @@ div {
   height: 100%;
   overflow: hidden;
 
+  .horizontal-calendar{
+    margin-bottom: 10px;
+  }
+  .github-link{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    overflow: hidden;
+    img{
+      position: relative;
+      border-radius: 2px;
+    }
+    &:hover img{
+      animation: flipInY 1s ;
+    }
+  }
+  .lang-icon{
+    position: absolute;
+    top: 5px;
+    right: 35px;
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    line-height: 25px;
+    cursor: pointer;
+    background-color: rgba(13, 141, 224,.7);
+    &:hover{
+      background-color: rgba(13, 141, 224,.9);
+    }
+  }
   .body {
     height: 100%;
     overflow-y: auto;
   }
   .content {
+    position: relative;
     display: inline-block;
     vertical-align: top;
     width: 50%;
@@ -662,7 +739,39 @@ div {
     line-height: 26px;
   }
 }
-
-
 }
+
+@keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(400px) rotateY(90deg);
+        transform: perspective(400px) rotateY(90deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in;
+        opacity: 0
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotateY(-20deg);
+        transform: perspective(400px) rotateY(-20deg);
+        -webkit-animation-timing-function: ease-in;
+        animation-timing-function: ease-in
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotateY(10deg);
+        transform: perspective(400px) rotateY(10deg);
+        opacity: 1
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotateY(-5deg);
+        transform: perspective(400px) rotateY(-5deg)
+    }
+
+    to {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px)
+    }
+}
+
 </style>
