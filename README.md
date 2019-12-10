@@ -23,6 +23,8 @@ export default {
         VueHorizontalCalendar
     }
 }
+
+</script>
 ```
 ### doc & demos
 [click here](https://jacques33.github.io/vue-horizontal-calendar/).
