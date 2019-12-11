@@ -39,80 +39,80 @@
             <tbody>
               <tr>
                 <td>choosedDate</td>
-                <td>初始化选中的日期；可接收格式如‘2019/12/01’或‘2019-12-01’或 Date对象实例</td>
+                <td>{{currLang.propDesc1}}</td>
                 <td>String，Date</td>
                 <td>new Date()</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>swipeSpace</td>
-                <td>点击左右箭头，切换的日期间隔天数</td>
+                <td>{{currLang.propDesc2}}</td>
                 <td>String，Number</td>
                 <td>7</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>choosedDatePos</td>
-                <td>当前默认选中的日期所处的位置；可选值：'left','center'</td>
+                <td>{{currLang.propDesc3}}</td>
                 <td>String</td>
                 <td>left</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>minDate</td>
-                <td>最小日期限制；可接收格式如‘2019/12/01’或‘2019-12-01’或 Date对象实例</td>
+                <td>{{currLang.propDesc4}}</td>
                 <td>String，Date</td>
                 <td>-</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>maxDate</td>
-                <td>最大日期限制；可接收格式如‘2019/12/01’或‘2019-12-01’或 Date对象实例</td>
+                <td>{{currLang.propDesc5}}</td>
                 <td>String，Date</td>
                 <td>-</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>choosedItemColor</td>
-                <td>选中的日期背景色</td>
+                <td>{{currLang.propDesc6}}</td>
                 <td>String</td>
                 <td>rgb(13, 141, 224)</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>todayItemColor</td>
-                <td>‘今天’未选中时的背景色</td>
+                <td>{{currLang.propDesc7}}</td>
                 <td>String</td>
                 <td>rgba(13, 141, 224, .1)</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>lang</td>
-                <td>语言；可选值：'zh'(中文)，'en'(英文)</td>
+                <td>{{currLang.propDesc8}}</td>
                 <td>String</td>
                 <td>zh</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>sundayText</td>
-                <td>星期天的中文字；仅当lang属性为zh时有效</td>
+                <td>{{currLang.propDesc9}}</td>
                 <td>String</td>
                 <td>日</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>showBorderTop</td>
-                <td>是否显示日历组件的顶部边框</td>
+                <td>{{currLang.propDesc10}}</td>
                 <td>Boolean</td>
                 <td>true</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
                 <td>resizeable</td>
-                <td>屏幕尺寸改变时，是否重绘日历组件</td>
+                <td>{{currLang.propDesc11}}</td>
                 <td>Boolean</td>
                 <td>true</td>
-                <td>否</td>
+                <td>{{currLang.falseText}}</td>
               </tr>
             </tbody>
           </table>
@@ -130,11 +130,11 @@
             <tbody>
               <tr>
                 <td>leftIcon</td>
-                <td>自定义左箭头内容</td>
+                <td>{{currLang.propDesc12}}</td>
               </tr>
               <tr>
                 <td>rightIcon</td>
-                <td>自定义右箭头内容</td>
+                <td>{{currLang.propDesc13}}</td>
               </tr>
             </tbody>
           </table>
@@ -147,25 +147,23 @@
               <tr>
                 <th>{{currLang.event}}</th>
                 <th>{{currLang.description}}</th>
-                <th width="30%">{{currLang.cbArg}}</th>
+                <th width="38%">{{currLang.cbArg}}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>change</td>
-                <td>选中日期变化事件，函数参数回传当前当前选中的日期数据。年，月数据都是两位数显示，个位数会自动补‘0’；星期几会根据语言设置不同而变化；</td>
-                <td>Object;数据格式如下：<br>{<br><p style="padding-left:20px;">dateFormat: "2019/12/01",<br>year: "2019",<br>month: "12",<br>date: "01",<br>timestamp: 1575129600000,<br>day: "日"</p>}</td>
+                <td>{{currLang.propDesc14}}</td>
+                <td>Object;{{currLang.propDesc15}}<br>{<br><p style="padding-left:20px;">dateFormat: "YYYY/MM/DD",<br>year: "YYYY",<br>month: "MM",<br>date: "DD",<br>timestamp: 1575129600000,<br>day: "{{lang=="English"?'日':'Su'}}"</p>}</td>
               </tr>
               <tr>
                 <td>firstDayChange</td>
-                <td>当前显示的最左侧日期变化事件(常伴随着左右按钮点击事件发生，但其他情形比如屏幕resize事件等也可能会触发此事件)，函数参数回传当前当前最左侧的日期数据。</td>
-                <td>Object;数据格式同change事件返回的数据格式</td>
+                <td>{{currLang.propDesc16}}</td>
+                <td>Object; {{currLang.propDesc17}}</td>
               </tr>
               <tr>
                 <td>swipeClick</td>
-                <td>左右按钮点击事件。回调函数返回点击事件类型；
-                  <br>'left'：左侧按钮点击事件<br>'right'：右侧按钮点击事件
-                </td>
+                <td v-html="currLang.propDesc18"></td>
                 <td>type</td>
               </tr>
             </tbody>
@@ -173,6 +171,21 @@
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
+        <!-- 0.3.0 -->
+        <div class="white-block change-log">
+          <h4> 0.3.0 
+            <small class="log-date">2019-12-11</small>
+          </h4>
+          <h5>Feature</h5>
+          <ul>
+            <li>新增English版本示例和文档说明</li>
+            <li>增加Github链接</li>
+          </ul>
+          <h5>Bug</h5>
+          <ul>
+            <li>当设置滑动间隔天数，大于可显示的最大日期数时的样式bug；</li>
+          </ul>
+        </div>
         <!-- 0.2.0 -->
         <div class="white-block change-log">
           <h4> 0.2.0 
@@ -187,7 +200,7 @@
           </ul>
           <h5>Bug</h5>
           <ul>
-            <li>swipeClick事件回传参数格式修改；</li>
+            <li>swipeClick事件回传参数格式问题；</li>
           </ul>
         </div>
         <!-- 0.1.0 -->
@@ -207,7 +220,7 @@
         <h2 class="preview-title">{{currLang.example}}1：<span>{{currLang.eg1}}</span></h2>
         <p style="text-align:center;line-height:24px;font-size:15px;">{{this.choosedDay2.dateFormat}}  {{currLang.week}}{{this.choosedDay2.day | weekName}}</p>
         <vue-horizontal-calendar choosedDate="2019/12/01" :lang="lang=='English'?'zh':'en'" v-on:change="dateChange2"></vue-horizontal-calendar>
-        <p class="excample-text">{{currLang.description + '：' + currLang.eg1_detail}}</p>
+        <p class="excample-text"><span class="strong-text">{{currLang.description}}：</span>{{currLang.eg1_detail}}</p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[1]"></div>
         <div class="split-line"></div>
@@ -221,14 +234,14 @@
         ></vue-horizontal-calendar>
         <p
           class="excample-text"
-        >{{currLang.description + '：' + currLang.eg2_detail}}</p>
+        ><span class="strong-text">{{currLang.description}}：</span>{{currLang.eg2_detail}}</p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[2]"></div>
         <div class="split-line"></div>
 
         <h2 class="preview-title">{{currLang.example}}3：<span>{{currLang.eg3}}</span></h2>
         <vue-horizontal-calendar swipeSpace="3" :lang="lang=='English'?'zh':'en'"></vue-horizontal-calendar>
-        <p class="excample-text">{{currLang.description + '：' + currLang.eg3_detail}}</p>
+        <p class="excample-text"><span class="strong-text">{{currLang.description}}：</span>{{currLang.eg3_detail}}</p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[3]"></div>
         <div class="split-line"></div>
@@ -248,17 +261,17 @@
           sundayText="天"
           :showBorderTop="true"
         >
-          <img slot="leftIcon" src="./assets/left.jpg" style="width:20px;margin-top:11px" />
-          <img slot="rightIcon" src="./assets/right.jpg" style="width:20px;margin-top:11px" />
+          <img slot="leftIcon" src="./assets/left.png" style="width:20px;margin-top:11px" />
+          <img slot="rightIcon" src="./assets/right.png" style="width:20px;margin-top:11px" />
         </vue-horizontal-calendar>
         <p class="excample-text">
-          {{currLang.description}}：
-          <br />1. <span class="text-blue">choosedItemColor：</span>{{currLang.eg5_detail[0]}}；
-          <br />2. <span class="text-blue">todayItemColor：</span>{{currLang.eg5_detail[1]}}；
-          <br />3. <span class="text-blue">sundayText：</span>{{currLang.eg5_detail[2]}}；
-          <br />4. <span class="text-blue">choosedDatePos：</span>{{currLang.eg5_detail[3]}}；
-          <br />5. <span class="text-blue">showBorderTop：</span>{{currLang.eg5_detail[4]}}；
-          <br />6. {{currLang.eg5_detail[5]}}；
+          <span class="strong-text">{{currLang.description}}：</span>
+          <br /><span class="text-black">1. </span><span class="text-blue">choosedItemColor：</span>{{currLang.eg5_detail[0]}}；
+          <br /><span class="text-black">2. </span><span class="text-blue">todayItemColor：</span>{{currLang.eg5_detail[1]}}；
+          <br /><span class="text-black">3. </span><span class="text-blue">sundayText：</span>{{currLang.eg5_detail[2]}}；
+          <br /><span class="text-black">4. </span><span class="text-blue">choosedDatePos：</span>{{currLang.eg5_detail[3]}}；
+          <br /><span class="text-black">5. </span><span class="text-blue">showBorderTop：</span>{{currLang.eg5_detail[4]}}；
+          <br /><span class="text-black">6. </span>{{currLang.eg5_detail[5]}}；
         </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[6]"></div>
@@ -279,11 +292,11 @@
           v-on:firstDayChange="firstDayChange"
         ></vue-horizontal-calendar>
         <p class="excample-text">
-          说明：
-          <br />1. {{currLang.eg6_detail[0]}}
-          <br />2. {{currLang.eg6_detail[1]}}
-          <br />3. {{currLang.eg6_detail[2]}}
-          <br />4. {{currLang.eg6_detail[3]}}
+          <span class="strong-text">{{currLang.description}}：</span>
+          <br /><span class="text-black">1. </span>{{currLang.eg6_detail[0]}}
+          <br /><span class="text-black">2. </span>{{currLang.eg6_detail[1]}}
+          <br /><span class="text-black">3. </span>{{currLang.eg6_detail[2]}}
+          <br /><span class="text-black">4. </span>{{currLang.eg6_detail[3]}}
         </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[7]"></div>
@@ -453,6 +466,14 @@ div {
 }
 span.text-blue {
     color: #a0c6ff;
+}
+span.text-black {
+    color: #444;
+    font-weight: 500;
+}
+span.strong-text {
+    color: #444;
+    font-weight: 600;
 }
 #app {
   font-family: "Microsoft Yahei", "Helvetica", "Lato", "Helvetica Neue",

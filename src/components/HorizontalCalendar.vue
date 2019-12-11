@@ -183,6 +183,11 @@ export default {
       }
       this.visibleDay = n;
 
+      // 如果单次滑动的天数，超过可显示的天数，则限制最大值为可显示天数；
+      if(this.changeCount > this.visibleDay){
+        this.changeCount = this.visibleDay;
+      }
+
       // "今天"
       this.today = this.formatOneDay(new Date());
       // "当前选中的日期"
