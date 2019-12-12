@@ -436,7 +436,6 @@ export default {
 <style lang="scss">
 .horizontal-calendar {
   width: 100%;
-  height: 51px;
   border-bottom: 1px solid #f2f2f2;
   background-color: #fff;
   box-sizing: border-box;
@@ -481,9 +480,13 @@ export default {
     padding: 5px 2px;
     line-height: 20px;
     border-right: 1px solid #f2f2f2;
+    background-color: #fff;
     font-size: 14px;
     text-align: center;
     cursor: pointer;
+    &:hover{
+      background-color: #f9f9f9;
+    }
   }
   .first-day {
     position: absolute;
@@ -540,17 +543,6 @@ export default {
     font-weight: 600;
   }
 
-  .calendar {
-    display: block;
-    width: 54px;
-    height: 50px;
-    line-height: 50px;
-    border-right: 1px solid #f2f2f2;
-    font-size: 22px;
-    font-weight: 500;
-    text-align: center;
-    cursor: pointer;
-  }
   .left-arrow,
   .right-arrow {
     display: inline-block;
@@ -566,6 +558,11 @@ export default {
     font-weight: 500;
     text-align: center;
     cursor: pointer;
+    transition: all .1s;
+
+    &:hover{
+      background-color: #f5f5f5;
+    }
   }
   .month {
     flex: 0 0 19px;

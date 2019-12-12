@@ -173,6 +173,16 @@
         <h2 class="preview-title">Change Log</h2>
         <!-- 0.3.0 -->
         <div class="white-block change-log">
+          <h4> 0.4.0 
+            <small class="log-date">2019-12-11</small>
+          </h4>
+          <h5>Feature</h5>
+          <ul>
+            <li>日期格子和左右箭头区域，新增鼠标hover效果</li>
+          </ul>
+        </div>
+        <!-- 0.3.0 -->
+        <div class="white-block change-log">
           <h4> 0.3.0 
             <small class="log-date">2019-12-11</small>
           </h4>
