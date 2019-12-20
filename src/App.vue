@@ -171,7 +171,7 @@
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
-        <!-- 0.3.0 -->
+        <!-- 0.4.0 -->
         <div class="white-block change-log">
           <h4> 0.4.0 
             <small class="log-date">2019-12-11</small>
