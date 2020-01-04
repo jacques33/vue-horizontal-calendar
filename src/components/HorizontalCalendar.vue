@@ -485,7 +485,7 @@ export default {
     text-align: center;
     cursor: pointer;
     &:hover{
-      background-color: #f9f9f9;
+      background-color: #f8f8f8;
     }
   }
   .first-day {
@@ -516,14 +516,12 @@ export default {
     font-weight: 500;
   }
   .today {
-    // background-color: rgba(135, 0, 0, 0.1);
     .date-item-date {
       color: #870000;
     }
   }
   //   选中的日期样式
   .choosed-day {
-    // background-color: #870000;
 
     .date-item-date,
     .date-item-day {
