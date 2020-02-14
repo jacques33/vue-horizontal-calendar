@@ -190,10 +190,10 @@
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
-        <!-- 0.4.0 -->
+        <!-- 0.5.0 -->
         <div class="white-block change-log">
           <h4>
-            0.4.0
+            0.5.0
             <small class="log-date">2020-02-14</small>
           </h4>
           <h5>Bug</h5>
