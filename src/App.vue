@@ -1,14 +1,19 @@
 <template>
   <div id="app">
-    
     <div class="body">
       <!-- documents -->
       <div class="content">
-        <a class="github-link" target="_blank" href="https://github.com/jacques33/vue-horizontal-calendar"><img src="./assets/github.jpg" alt="github" width="25"></a>
+        <a
+          class="github-link"
+          target="_blank"
+          href="https://github.com/jacques33/vue-horizontal-calendar"
+        >
+          <img src="./assets/github.jpg" alt="github" width="25" />
+        </a>
         <a class="lang-icon" @click="changeLanguage">{{lang}}</a>
         <h2 class="page-title">
           vue-horizontal-calendar
-          <small>  -- {{currLang.small_title}}</small>
+          <small>-- {{currLang.small_title}}</small>
         </h2>
         <!-- install -->
         <div class="white-block">
@@ -19,7 +24,8 @@
         <div class="white-block">
           <h4>{{currLang.import}}</h4>
           <p class="tips">
-            <strong>{{currLang.description}}：</strong>{{currLang.import_detail}}
+            <strong>{{currLang.description}}：</strong>
+            {{currLang.import_detail}}
           </p>
           <div class="code" v-html="codeList[0]"></div>
         </div>
@@ -154,7 +160,20 @@
               <tr>
                 <td>change</td>
                 <td>{{currLang.propDesc14}}</td>
-                <td>Object;{{currLang.propDesc15}}<br>{<br><p style="padding-left:20px;">dateFormat: "YYYY/MM/DD",<br>year: "YYYY",<br>month: "MM",<br>date: "DD",<br>timestamp: 1575129600000,<br>day: "{{lang=="English"?'日':'Su'}}"</p>}</td>
+                <td>
+                  Object;{{currLang.propDesc15}}
+                  <br />{
+                  <br />
+                  <p style="padding-left:20px;">
+                    dateFormat: "YYYY/MM/DD",
+                    <br />year: "YYYY",
+                    <br />month: "MM",
+                    <br />date: "DD",
+                    <br />timestamp: 1575129600000,
+                    <br />
+                    day: "{{lang=="English"?'日':'Su'}}"
+                  </p>}
+                </td>
               </tr>
               <tr>
                 <td>firstDayChange</td>
@@ -173,7 +192,20 @@
         <h2 class="preview-title">Change Log</h2>
         <!-- 0.4.0 -->
         <div class="white-block change-log">
-          <h4> 0.4.0 
+          <h4>
+            0.4.0
+            <small class="log-date">2020-02-14</small>
+          </h4>
+          <h5>Bug</h5>
+          <ul>
+            <li>解决依赖的corejs安装报错的问题；</li>
+            <li>去掉部分不必要的依赖包</li>
+          </ul>
+        </div>
+        <!-- 0.4.0 -->
+        <div class="white-block change-log">
+          <h4>
+            0.4.0
             <small class="log-date">2019-12-11</small>
           </h4>
           <h5>Feature</h5>
@@ -183,7 +215,8 @@
         </div>
         <!-- 0.3.0 -->
         <div class="white-block change-log">
-          <h4> 0.3.0 
+          <h4>
+            0.3.0
             <small class="log-date">2019-12-11</small>
           </h4>
           <h5>Feature</h5>
@@ -198,7 +231,8 @@
         </div>
         <!-- 0.2.0 -->
         <div class="white-block change-log">
-          <h4> 0.2.0 
+          <h4>
+            0.2.0
             <small class="log-date">2019-12-10</small>
           </h4>
           <h5>Feature</h5>
@@ -215,7 +249,8 @@
         </div>
         <!-- 0.1.0 -->
         <div class="white-block change-log">
-          <h4> 0.1.0 
+          <h4>
+            0.1.0
             <small class="log-date">2019-12-08</small>
           </h4>
           <h5>Feature</h5>
@@ -227,42 +262,70 @@
       </div>
       <!-- demos -->
       <div class="demos">
-        <h2 class="preview-title">{{currLang.example}}1：<span>{{currLang.eg1}}</span></h2>
-        <p style="text-align:center;line-height:24px;font-size:15px;">{{this.choosedDay2.dateFormat}}  {{currLang.week}}{{this.choosedDay2.day | weekName}}</p>
-        <vue-horizontal-calendar choosedDate="2019/12/01" :lang="lang=='English'?'zh':'en'" v-on:change="dateChange2"></vue-horizontal-calendar>
-        <p class="excample-text"><span class="strong-text">{{currLang.description}}：</span>{{currLang.eg1_detail}}</p>
+        <h2 class="preview-title">
+          {{currLang.example}}1：
+          <span>{{currLang.eg1}}</span>
+        </h2>
+        <p
+          style="text-align:center;line-height:24px;font-size:15px;"
+        >{{this.choosedDay2.dateFormat}} {{currLang.week}}{{this.choosedDay2.day | weekName}}</p>
+        <vue-horizontal-calendar
+          choosedDate="2019/12/01"
+          :lang="lang=='English'?'zh':'en'"
+          v-on:change="dateChange2"
+        ></vue-horizontal-calendar>
+        <p class="excample-text">
+          <span class="strong-text">{{currLang.description}}：</span>
+          {{currLang.eg1_detail}}
+        </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[1]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">{{currLang.example}}2：<span>{{currLang.eg2}}</span></h2>
+        <h2 class="preview-title">
+          {{currLang.example}}2：
+          <span>{{currLang.eg2}}</span>
+        </h2>
         <vue-horizontal-calendar
           :lang="lang=='English'?'zh':'en'"
           minDate="2019/12/01"
           maxDate="2020/12/30"
           v-on:change="dateChange3"
         ></vue-horizontal-calendar>
-        <p
-          class="excample-text"
-        ><span class="strong-text">{{currLang.description}}：</span>{{currLang.eg2_detail}}</p>
+        <p class="excample-text">
+          <span class="strong-text">{{currLang.description}}：</span>
+          {{currLang.eg2_detail}}
+        </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[2]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">{{currLang.example}}3：<span>{{currLang.eg3}}</span></h2>
+        <h2 class="preview-title">
+          {{currLang.example}}3：
+          <span>{{currLang.eg3}}</span>
+        </h2>
         <vue-horizontal-calendar swipeSpace="3" :lang="lang=='English'?'zh':'en'"></vue-horizontal-calendar>
-        <p class="excample-text"><span class="strong-text">{{currLang.description}}：</span>{{currLang.eg3_detail}}</p>
+        <p class="excample-text">
+          <span class="strong-text">{{currLang.description}}：</span>
+          {{currLang.eg3_detail}}
+        </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[3]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">{{currLang.example}}4：<span>{{currLang.eg4}}</span></h2>
+        <h2 class="preview-title">
+          {{currLang.example}}4：
+          <span>{{currLang.eg4}}</span>
+        </h2>
         <vue-horizontal-calendar :lang="lang=='English'?'en':'zh'"></vue-horizontal-calendar>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
-        <div class="code"  v-html="currLangDemo"></div>
+        <div class="code" v-html="currLangDemo"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">{{currLang.example}}5：<span>{{currLang.eg5}}</span></h2>
+        <h2 class="preview-title">
+          {{currLang.example}}5：
+          <span>{{currLang.eg5}}</span>
+        </h2>
         <vue-horizontal-calendar
           :lang="lang=='English'?'zh':'en'"
           choosedItemColor="rgb(150, 0, 0)"
@@ -276,19 +339,41 @@
         </vue-horizontal-calendar>
         <p class="excample-text">
           <span class="strong-text">{{currLang.description}}：</span>
-          <br /><span class="text-black">1. </span><span class="text-blue">choosedItemColor：</span>{{currLang.eg5_detail[0]}}；
-          <br /><span class="text-black">2. </span><span class="text-blue">todayItemColor：</span>{{currLang.eg5_detail[1]}}；
-          <br /><span class="text-black">3. </span><span class="text-blue">sundayText：</span>{{currLang.eg5_detail[2]}}；
-          <br /><span class="text-black">4. </span><span class="text-blue">choosedDatePos：</span>{{currLang.eg5_detail[3]}}；
-          <br /><span class="text-black">5. </span><span class="text-blue">showBorderTop：</span>{{currLang.eg5_detail[4]}}；
-          <br /><span class="text-black">6. </span>{{currLang.eg5_detail[5]}}；
+          <br />
+          <span class="text-black">1.</span>
+          <span class="text-blue">choosedItemColor：</span>
+          {{currLang.eg5_detail[0]}}；
+          <br />
+          <span class="text-black">2.</span>
+          <span class="text-blue">todayItemColor：</span>
+          {{currLang.eg5_detail[1]}}；
+          <br />
+          <span class="text-black">3.</span>
+          <span class="text-blue">sundayText：</span>
+          {{currLang.eg5_detail[2]}}；
+          <br />
+          <span class="text-black">4.</span>
+          <span class="text-blue">choosedDatePos：</span>
+          {{currLang.eg5_detail[3]}}；
+          <br />
+          <span class="text-black">5.</span>
+          <span class="text-blue">showBorderTop：</span>
+          {{currLang.eg5_detail[4]}}；
+          <br />
+          <span class="text-black">6.</span>
+          {{currLang.eg5_detail[5]}}；
         </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[6]"></div>
         <div class="split-line"></div>
 
-        <h2 class="preview-title">{{currLang.example}}6：<span>{{currLang.eg6}}</span></h2>
-        <h4 class="week-title">{{currentFirstDay.year + currLang.year + currentFirstDay.month + currLang.month}}</h4>
+        <h2 class="preview-title">
+          {{currLang.example}}6：
+          <span>{{currLang.eg6}}</span>
+        </h2>
+        <h4
+          class="week-title"
+        >{{currentFirstDay.year + currLang.year + currentFirstDay.month + currLang.month}}</h4>
         <vue-horizontal-calendar
           style="width:410px;margin: 0 auto;"
           swipeSpace="7"
@@ -303,14 +388,21 @@
         ></vue-horizontal-calendar>
         <p class="excample-text">
           <span class="strong-text">{{currLang.description}}：</span>
-          <br /><span class="text-black">1. </span>{{currLang.eg6_detail[0]}}
-          <br /><span class="text-black">2. </span>{{currLang.eg6_detail[1]}}
-          <br /><span class="text-black">3. </span>{{currLang.eg6_detail[2]}}
-          <br /><span class="text-black">4. </span>{{currLang.eg6_detail[3]}}
+          <br />
+          <span class="text-black">1.</span>
+          {{currLang.eg6_detail[0]}}
+          <br />
+          <span class="text-black">2.</span>
+          {{currLang.eg6_detail[1]}}
+          <br />
+          <span class="text-black">3.</span>
+          {{currLang.eg6_detail[2]}}
+          <br />
+          <span class="text-black">4.</span>
+          {{currLang.eg6_detail[3]}}
         </p>
         <a class="code-toggle" @click="toggleCode($event)">view code</a>
         <div class="code" v-html="codeList[7]"></div>
-
       </div>
     </div>
   </div>
@@ -330,7 +422,7 @@ export default {
   data() {
     return {
       // 语言
-      lang: 'English',
+      lang: "English",
       chinese: langBag.zh,
       english: langBag.en,
       currLang: langBag.zh,
@@ -381,8 +473,8 @@ export default {
     firstDayChange(day) {
       this.currentFirstDay = day;
     },
-    arrowClick(type){
-      console.log(type + ' btn has been clicked')
+    arrowClick(type) {
+      console.log(type + " btn has been clicked");
     },
     // 打开、关闭 代码演示
     toggleCode(e) {
@@ -394,13 +486,13 @@ export default {
       }
     },
     // 切换语言
-    changeLanguage(){
-      if(this.lang === 'English'){
-        this.lang = '中文';
-        this.currLang = this.english
-      }else{
-        this.lang = 'English';
-        this.currLang = this.chinese
+    changeLanguage() {
+      if (this.lang === "English") {
+        this.lang = "中文";
+        this.currLang = this.english;
+      } else {
+        this.lang = "English";
+        this.currLang = this.chinese;
       }
     }
   },
@@ -412,48 +504,57 @@ export default {
       let monday_timestamp =
         today.getTime() - (today_weekCode - 1) * 1000 * 3600 * 24;
       let monday = new Date(monday_timestamp);
-      return monday.getFullYear() + "/" + (monday.getMonth() + 1) + "/" + monday.getDate();
+      return (
+        monday.getFullYear() +
+        "/" +
+        (monday.getMonth() + 1) +
+        "/" +
+        monday.getDate()
+      );
     },
 
-    currLangDemo(){
-      if(this.lang === 'English'){
-        return this.codeList[4]
-      }else{
-        return this.codeList[5]
+    currLangDemo() {
+      if (this.lang === "English") {
+        return this.codeList[4];
+      } else {
+        return this.codeList[5];
       }
     }
   },
   filters: {
-    weekName: week =>{
+    weekName: week => {
       const dirt_en = {
-        "Su": "Sunday",
-        "Mo": "Monday",
-        "Tu": "Tuesday",
-        "We": "Wednesday",
-        "Th": "Thursday",
-        "Fr": "Friday",
-        "Sa": "Saturday"
+        Su: "Sunday",
+        Mo: "Monday",
+        Tu: "Tuesday",
+        We: "Wednesday",
+        Th: "Thursday",
+        Fr: "Friday",
+        Sa: "Saturday"
       };
-      return dirt_en[week]?dirt_en[week]:week
+      return dirt_en[week] ? dirt_en[week] : week;
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style>
 * {
   margin: 0;
   padding: 0;
 }
+
 html,
 body {
   height: 100%;
 }
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
   background: #fbf9f7;
 }
+
 ::-webkit-scrollbar-button:vertical:decremen,
 ::-webkit-scrollbar-button:vertical:end:decrement,
 ::-webkit-scrollbar-button:vertical:increment,
@@ -464,345 +565,370 @@ body {
 ::-webkit-scrollbar-button:horizontal:start:increment {
   display: none;
 }
-::-webkit-scrollbar-thumb:vertical,::-webkit-scrollbar-thumb:horizontal{
+
+::-webkit-scrollbar-thumb:vertical,
+::-webkit-scrollbar-thumb:horizontal {
   background-color: #ccc;
   border-radius: 4px;
 }
-::-webkit-scrollbar-thumb:vertical:hover,::-webkit-scrollbar-thumb:horizontal:hover {
+
+::-webkit-scrollbar-thumb:vertical:hover,
+::-webkit-scrollbar-thumb:horizontal:hover {
   background-color: #aaa;
 }
+
 div {
   box-sizing: border-box;
 }
+
 span.text-blue {
-    color: #a0c6ff;
+  color: #a0c6ff;
 }
+
 span.text-black {
-    color: #444;
-    font-weight: 500;
+  color: #444;
+  font-weight: 500;
 }
+
 span.strong-text {
-    color: #444;
-    font-weight: 600;
+  color: #444;
+  font-weight: 600;
 }
+
 #app {
   font-family: "Microsoft Yahei", "Helvetica", "Lato", "Helvetica Neue",
-    Helvetica, Arial, sans-serif;
+ Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: left;
   color: #2c3e50;
   height: 100%;
   overflow: hidden;
-
-  .horizontal-calendar{
-    margin-bottom: 10px;
-  }
-  .github-link{
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    overflow: hidden;
-    img{
-      position: relative;
-      border-radius: 2px;
-    }
-    &:hover img{
-      animation: flipInY 1s ;
-    }
-  }
-  .lang-icon{
-    position: absolute;
-    top: 5px;
-    right: 35px;
-    width: 50px;
-    height: 25px;
-    font-size: 12px;
-    color: #fff;
-    text-align: center;
-    border-radius: 2px;
-    line-height: 25px;
-    cursor: pointer;
-    background-color: rgba(13, 141, 224,.7);
-    &:hover{
-      background-color: rgba(13, 141, 224,.9);
-    }
-  }
-  .body {
-    height: 100%;
-    overflow-y: auto;
-  }
-  .content {
-    position: relative;
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-    padding: 30px 30px 180px;
-    background-color: #fafafa;
-  }
-  .demos {
-    display: inline-block;
-    vertical-align: top;
-    width: 50%;
-    padding: 30px 20px 100px;
-
-    .preview-title {
-      font-size: 16px;
-      font-weight: 600;
-      span{
-        font-weight: 500;
-        font-size: 15px;
-      }
-    }
-    .excample-text {
-      color: #999;
-      font-size: 14px;
-      margin: 10px 0 0;
-    }
-  }
-  .api-table {
-    width: 100%;
-
-    thead tr {
-      height: 40px;
-      color: #666;
-      line-height: 32px;
-      background-color: #e1e3e4;
-      font-size: 13px;
-      font-weight: 700;
-      text-align: left;
-
-      th{
-        padding: 5px 10px;
-      }
-    }
-
-    tbody tr {
-      height: 40px;
-      color: #666;
-      line-height: 20px;
-      font-size: 13px;
-      font-weight: 500;
-      text-align: left;
-
-      td {
-        min-width: 60px;
-        padding: 5px 10px;
-      }
-
-      td:first-child {
-        color: rgb(99, 172, 214);
-        font-size: 14px;
-      }
-    }
-
-    tr th:first-child,
-    tr td:first-child {
-      padding-left: 10px;
-    }
-  }
-
-  .font-bold {
-    font-weight: bold;
-  }
-  .page-title {
-    margin: 0 0 30px;
-    color: #333;
-    font-weight: normal;
-    line-height: 1.5;
-    font-size: 30px;
-    cursor: default;
-
-    small {
-      margin-left: 10px;
-      font-size: 16px;
-    }
-  }
-
-  .white-block {
-    margin-bottom: 24px;
-    padding: 24px;
-    background-color: #fff;
-    border-radius: 6px;
-    box-shadow: 0 8px 12px #ebedf0;
-
-    h4 {
-      color: #666;
-      margin-bottom: 24px;
-      font-weight: 500;
-      font-size: 18px;
-    }
-    code {
-      position: relative;
-      display: block;
-      overflow-x: auto;
-      color: #455a64;
-      font-size: 13px;
-      font-family: "Source Code Pro", "Monaco", "Inconsolata", monospace;
-      line-height: 24px;
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
-    p,
-    span {
-      font-weight: 500;
-    }
-    .hljs-comment {
-      color: #999;
-    }
-
-    .tips {
-      font-size: 14px;
-      line-height: 24px;
-      margin: 5px 0 5px;
-    }
-
-    .code-toggle {
-      color: #991200;
-      font-size: 12px;
-      font-weight: bold;
-      display: block;
-      margin: 15px 0 5px;
-      cursor: pointer;
-    }
-
-    .code {
-      display: block;
-      background-color: #efefef;
-      color: #2686ff;
-      font-size: 14px;
-      border-radius: 6px;
-      overflow: auto;
-      line-height: 24px;
-    }
-
-    strong {
-      font-weight: bold;
-      color: #222;
-    }
-  }
-  .preview-title {
-    color: #222;
-    font-weight: 500;
-    margin: 20px 0;
-
-    &:first-child{
-      margin-top: 20px;
-    }
-  }
-  .label {
-    display: block;
-    margin: 10px 15px;
-    font-size: 13px;
-    color: #888;
-    font-weight: 500;
-  }
-  .week-title {
-    text-align: center;
-    border: 1px solid #f2f2f2;
-    width: 410px;
-    margin: 0 auto;
-    line-height: 26px;
-    color: #333;
-    font-size: 15px;
-    box-sizing: border-box;
-  }
-
-  .label-text {
-    background-color: #fff2f1;
-    font-style: normal;
-  }
-
-  .code-toggle {
-    width: 80px;
-    color: #a2d4ff;
-    font-size: 12px;
-    line-height: 24px;
-    text-align: center;
-    font-weight: 500;
-    margin: 5px 0 5px;
-    display: block;
-    cursor: pointer;
-    border-radius: 2px;
-    border: 1px dashed #a2d4ff;
-    user-select: none;
-  }
-
-  .code {
-    display: none;
-    color: #2686ff;
-    font-size: 14px;
-    border-radius: 6px;
-    overflow: auto;
-  }
-
-  .split-line{
-    width: calc(100% + 40px);
-    height: 8px;
-    background: #fafafa;
-    margin: 40px 0;
-    margin-left: -20px;
-  }
-
-  .change-log{
-  h4{
-    font-size: 24px;
-    font-weight: 500;
-  }
-  .log-date{
-    font-size: 12px;
-    font-weight: 500;
-    color: #888;
-    margin-left: 10px;
-    background-color: #f7f7f7;
-  }
-  h5{
-    font-size: 16px;
-    font-weight: 500;
-    color: #0d8de0;
-    margin: 20px 0 5px;
-  }
-  ul,li{
-    list-style: disc inside;
-    color: #888;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 26px;
-  }
 }
+
+#app .horizontal-calendar {
+  margin-bottom: 10px;
+}
+
+#app .github-link {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  overflow: hidden;
+}
+
+#app .github-link img {
+  position: relative;
+  border-radius: 2px;
+}
+
+#app .github-link:hover img {
+  animation: flipInY 1s;
+}
+
+#app .lang-icon {
+  position: absolute;
+  top: 5px;
+  right: 35px;
+  width: 50px;
+  height: 25px;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  line-height: 25px;
+  cursor: pointer;
+  background-color: rgba(13, 141, 224, 0.7);
+}
+
+#app .lang-icon:hover {
+  background-color: rgba(13, 141, 224, 0.9);
+}
+
+#app .body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+#app .content {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  padding: 30px 30px 180px;
+  background-color: #fafafa;
+}
+
+#app .demos {
+  display: inline-block;
+  vertical-align: top;
+  width: 50%;
+  padding: 30px 20px 100px;
+}
+
+#app .demos .preview-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#app .demos .preview-title span {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+#app .demos .excample-text {
+  color: #999;
+  font-size: 14px;
+  margin: 10px 0 0;
+}
+
+#app .api-table {
+  width: 100%;
+}
+
+#app .api-table thead tr {
+  height: 40px;
+  color: #666;
+  line-height: 32px;
+  background-color: #e1e3e4;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: left;
+}
+
+#app .api-table thead tr th {
+  padding: 5px 10px;
+}
+
+#app .api-table tbody tr {
+  height: 40px;
+  color: #666;
+  line-height: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+}
+
+#app .api-table tbody tr td {
+  min-width: 60px;
+  padding: 5px 10px;
+}
+
+#app .api-table tbody tr td:first-child {
+  color: #63acd6;
+  font-size: 14px;
+}
+
+#app .api-table tr th:first-child,
+#app .api-table tr td:first-child {
+  padding-left: 10px;
+}
+
+#app .font-bold {
+  font-weight: bold;
+}
+
+#app .page-title {
+  margin: 0 0 30px;
+  color: #333;
+  font-weight: normal;
+  line-height: 1.5;
+  font-size: 30px;
+  cursor: default;
+}
+
+#app .page-title small {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+#app .white-block {
+  margin-bottom: 24px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 8px 12px #ebedf0;
+}
+
+#app .white-block h4 {
+  color: #666;
+  margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#app .white-block code {
+  position: relative;
+  display: block;
+  overflow-x: auto;
+  color: #455a64;
+  font-size: 13px;
+  font-family: "Source Code Pro", "Monaco", "Inconsolata", monospace;
+  line-height: 24px;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+#app .white-block p,
+#app .white-block span {
+  font-weight: 500;
+}
+
+#app .white-block .hljs-comment {
+  color: #999;
+}
+
+#app .white-block .tips {
+  font-size: 14px;
+  line-height: 24px;
+  margin: 5px 0 5px;
+}
+
+#app .white-block .code-toggle {
+  color: #991200;
+  font-size: 12px;
+  font-weight: bold;
+  display: block;
+  margin: 15px 0 5px;
+  cursor: pointer;
+}
+
+#app .white-block .code {
+  display: block;
+  background-color: #efefef;
+  color: #2686ff;
+  font-size: 14px;
+  border-radius: 6px;
+  overflow: auto;
+  line-height: 24px;
+}
+
+#app .white-block strong {
+  font-weight: bold;
+  color: #222;
+}
+
+#app .preview-title {
+  color: #222;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+#app .preview-title:first-child {
+  margin-top: 20px;
+}
+
+#app .label {
+  display: block;
+  margin: 10px 15px;
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+}
+
+#app .week-title {
+  text-align: center;
+  border: 1px solid #f2f2f2;
+  width: 410px;
+  margin: 0 auto;
+  line-height: 26px;
+  color: #333;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+#app .label-text {
+  background-color: #fff2f1;
+  font-style: normal;
+}
+
+#app .code-toggle {
+  width: 80px;
+  color: #a2d4ff;
+  font-size: 12px;
+  line-height: 24px;
+  text-align: center;
+  font-weight: 500;
+  margin: 5px 0 5px;
+  display: block;
+  cursor: pointer;
+  border-radius: 2px;
+  border: 1px dashed #a2d4ff;
+  user-select: none;
+}
+
+#app .code {
+  display: none;
+  color: #2686ff;
+  font-size: 14px;
+  border-radius: 6px;
+  overflow: auto;
+}
+
+#app .split-line {
+  width: calc(100% + 40px);
+  height: 8px;
+  background: #fafafa;
+  margin: 40px 0;
+  margin-left: -20px;
+}
+
+#app .change-log h4 {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#app .change-log .log-date {
+  font-size: 12px;
+  font-weight: 500;
+  color: #888;
+  margin-left: 10px;
+  background-color: #f7f7f7;
+}
+
+#app .change-log h5 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #0d8de0;
+  margin: 20px 0 5px;
+}
+
+#app .change-log ul,
+#app .change-log li {
+  list-style: disc inside;
+  color: #888;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 26px;
 }
 
 @keyframes flipInY {
-    0% {
-        -webkit-transform: perspective(400px) rotateY(90deg);
-        transform: perspective(400px) rotateY(90deg);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in;
-        opacity: 0
-    }
-
-    40% {
-        -webkit-transform: perspective(400px) rotateY(-20deg);
-        transform: perspective(400px) rotateY(-20deg);
-        -webkit-animation-timing-function: ease-in;
-        animation-timing-function: ease-in
-    }
-
-    60% {
-        -webkit-transform: perspective(400px) rotateY(10deg);
-        transform: perspective(400px) rotateY(10deg);
-        opacity: 1
-    }
-
-    80% {
-        -webkit-transform: perspective(400px) rotateY(-5deg);
-        transform: perspective(400px) rotateY(-5deg)
-    }
-
-    to {
-        -webkit-transform: perspective(400px);
-        transform: perspective(400px)
-    }
+  0% {
+    -webkit-transform: perspective(400px) rotateY(90deg);
+    transform: perspective(400px) rotateY(90deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+    opacity: 0;
+  }
+  40% {
+    -webkit-transform: perspective(400px) rotateY(-20deg);
+    transform: perspective(400px) rotateY(-20deg);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  60% {
+    -webkit-transform: perspective(400px) rotateY(10deg);
+    transform: perspective(400px) rotateY(10deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: perspective(400px) rotateY(-5deg);
+    transform: perspective(400px) rotateY(-5deg);
+  }
+  to {
+    -webkit-transform: perspective(400px);
+    transform: perspective(400px);
+  }
 }
 
 </style>
