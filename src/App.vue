@@ -183,13 +183,30 @@
               <tr>
                 <td>swipeClick</td>
                 <td v-html="currLang.propDesc18"></td>
-                <td>type</td>
+                <td v-html="currLang.propDesc19"></td>
+              </tr>
+              <tr>
+                <td>swipeToEnd</td>
+                <td v-html="currLang.propDesc20"></td>
+                <td v-html="currLang.propDesc21"></td>
               </tr>
             </tbody>
           </table>
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
+        <!-- 0.6.0 -->
+        <div class="white-block change-log">
+          <h4>
+            0.6.0
+            <small class="log-date">2020-02-14</small>
+          </h4>
+          <h5>Feature</h5>
+          <ul>
+            <li>新增滑动到最大/最小日期的回调事件</li>
+            <li>choosedDatePos属性，增加'right'属性值</li>
+          </ul>
+        </div>
         <!-- 0.5.0 -->
         <div class="white-block change-log">
           <h4>
@@ -288,9 +305,12 @@
         </h2>
         <vue-horizontal-calendar
           :lang="lang=='English'?'zh':'en'"
+          choosedDate="2019/12/10"
+          choosedDatePos="center"
           minDate="2019/12/01"
-          maxDate="2020/12/30"
+          maxDate="2019/12/30"
           v-on:change="dateChange3"
+          v-on:swipeToEnd="swipeToEnd"
         ></vue-horizontal-calendar>
         <p class="excample-text">
           <span class="strong-text">{{currLang.description}}：</span>
@@ -334,8 +354,8 @@
           sundayText="天"
           :showBorderTop="true"
         >
-          <img slot="leftIcon" src="./assets/left.png" style="width:20px;margin-top:11px" />
-          <img slot="rightIcon" src="./assets/right.png" style="width:20px;margin-top:11px" />
+          <img slot="leftIcon" src="./assets/left.png" style="width:20px;position:relative;top:6px;" />
+          <img slot="rightIcon" src="./assets/right.png" style="width:20px;position:relative;top:6px;" />
         </vue-horizontal-calendar>
         <p class="excample-text">
           <span class="strong-text">{{currLang.description}}：</span>
@@ -470,6 +490,13 @@ export default {
       this.choosedDay5 = day;
     },
 
+    swipeToEnd(direction) {
+      if(direction === "left"){
+        alert("已滑动到最小日期！")
+      }else if(direction === "right"){
+        alert("已滑动到最大日期！")
+      }
+    },
     firstDayChange(day) {
       this.currentFirstDay = day;
     },

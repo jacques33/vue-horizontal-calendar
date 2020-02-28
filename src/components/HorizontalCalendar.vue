@@ -65,7 +65,7 @@ export default {
       required: false,
       default: 7
     },
-    // 当前默认选中的日期所处的位置，'left，center'，默认左
+    // 当前默认选中的日期所处的位置，'left，center'，'right'，默认左
     choosedDatePos: {
       type: String,
       required: false,
@@ -196,10 +196,15 @@ export default {
       // 第一天
       let firstDay = this.formatOneDay(this.choosedDate);
       if (this.choosedDatePos === "center") {
-        let ts =
+        let ts1 =
           firstDay.timestamp -
           parseInt(this.visibleDay / 2) * 1000 * 60 * 60 * 24;
-        this.firstDay = this.formatOneDay(ts);
+        this.firstDay = this.formatOneDay(ts1);
+      } else if(this.choosedDatePos === "right"){
+        let ts2 =
+          firstDay.timestamp -
+          parseInt(this.visibleDay-1) * 1000 * 60 * 60 * 24;
+          this.firstDay = this.formatOneDay(ts2);
       } else {
         this.firstDay = firstDay;
       }
@@ -244,6 +249,7 @@ export default {
           // 2，如果由于最小日期限制，加载已经到头，则不再加载新的日期,直接滚动到最左边
         } else if (!this.swipeLeftMore) {
           this.translateX = 0;
+          this.$emit("swipeToEnd", "left");
         } else {
           //,3，以上条件都不满足，则说明左侧已经没有可展示的日期了，要新增数据
           let fdt = this.dateList[0].timestamp;
@@ -286,6 +292,7 @@ export default {
           // 2，如果由于最大日期限制，加载已经到头，则不再加载新的日期; 直接滚动到末端；
           if (!this.swipeRightMore) {
             this.translateX = (this.dateList.length - this.visibleDay) * -50;
+            this.$emit("swipeToEnd", "right");
             return;
           }
           // 3，以上都不满足，则需要生成新日期，然后滚动
