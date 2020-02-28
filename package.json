@@ -1,6 +1,6 @@
 {
   "name": "vue-horizontal-calendar",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "a horizontal calendar component for Vue.js",
   "private": false,
   "scripts": {
