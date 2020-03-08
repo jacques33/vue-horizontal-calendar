@@ -46,7 +46,7 @@
   </div>
 </template>
 <script>
-import "@/assets/iconfont.js";
+import "../assets/iconfont.js";
 
 export default {
   name: "vue-horizontal-calendar",
@@ -440,150 +440,160 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
 .horizontal-calendar {
   width: 100%;
   border-bottom: 1px solid #f2f2f2;
   background-color: #fff;
   box-sizing: border-box;
   user-select: none;
-
-  * {
-    margin: 0;
-    padding: 0;
-  }
-  div {
-    box-sizing: border-box;
-  }
-  .icon {
-    width: 1em;
-    height: 1em;
-    vertical-align: -0.15em;
-    fill: currentColor;
-    overflow: hidden;
-    font-size: 16px;
-    color: #999;
-  }
-
-  .date-list {
-    display: inline-block;
-    vertical-align: top;
-    width: calc(100% - 60px);
-    overflow: hidden;
-    position: relative;
-  }
-  .date-list-scroll {
-    width: 60000px;
-    height: 50px;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-    transform: translateX(0);
-  }
-  .date-item {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 5px 2px;
-    line-height: 20px;
-    border-right: 1px solid #f2f2f2;
-    background-color: #fff;
-    font-size: 14px;
-    text-align: center;
-    cursor: pointer;
-    &:hover{
-      background-color: #f8f8f8;
-    }
-  }
-  .first-day {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30px;
-    height: 30px;
-    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAFN++nkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACoF8tmAAACJklEQVRoBd2ZjXHDIAxGk1536TSdNtM00zSyDw5sBJKQxA93sd1IH4/nOE6bPh+Px+/ngY4vtHIWXrWGF/RgDUcRa4jFUkNWvDbcitAAo6r5rDVgBjAr6n+so5SMC7wWYwHmTYtZAYowqjpnS2Fb9Sz0p0+9vtOfiMdx7ZxwDAUIJXwLUcJoqBZuhkphciiEe16q7PIJE1L36CXdmuBQTC/cViDU47nhhmMQZuKEsyAnfAtSw8UgJYwGW+FqsBZuBrEwKVgKk4PXMCsIYRiyW+cn2PWWPNCyjejOK0OdqXhaKTfeHlDIRmB4whp8A1qDUaAVuAnUBpOBWmA2sBcsBkrB3UAuWA1IBasDW2AzIAY2BwYw7MUfbekk3ONRH4tvzm98XCms//0p/HmDDyisyBMcoZ7gDOoFvkE9wEWoNRiFWoKrUCtwE2oBJkG1wWSoJpgF1QKzoRpgEbQXLIb2gLugUnA3VAJWgXLBalAOWBVKBatDKWATaAtsBq2BTaEY2BxaArtAr2A3aAp2hQIYxs+5892O+mvR1/KkHa+q9VeZI8SuzOzy3Vk4Ew1nYUfhouiOwlXRnYRJojsIs0RXFhaJrijcJbqSsIroCsKqojMLm4jOKGwqOpOwi+gMwq6iI4WHiI4QHirqKTyFqIfwVKKWwlOKWghPLaopvISohvBSoj3CS4pKhJcW5QhvIUoR3kq0JrylaEl4a9EgDPsh/8VLF+B5/A/jzYX1v2DlFgAAAABJRU5ErkJggg==) no-repeat;
-    background-size: 90% 90%;
-    p {
-      color: #fff;
-      font-size: 12px;
-      width: 54%;
-      text-align: center;
-      line-height: 16px;
-      transform: scale(0.9);
-    }
-  }
-  .date-item-date {
-    color: #212121;
-    font-size: 15px;
-    font-weight: 600;
-  }
-  .date-item-day {
-    color: #999;
-    font-size: 13px;
-    font-weight: 500;
-  }
-  .today {
-    .date-item-date {
-      color: #870000;
-    }
-  }
-  //   选中的日期样式
-  .choosed-day {
-
-    .date-item-date,
-    .date-item-day {
-      color: #fff;
-    }
-  }
-  .today-not-choosed {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    margin: 6px;
-    background-color: rgba(153, 153, 153, 0.3);
-    color: #870000;
-    font-size: 16px;
-    text-align: center;
-    line-height: 28px;
-    font-weight: 600;
-  }
-
-  .left-arrow,
-  .right-arrow {
-    display: inline-block;
-    box-sizing: border-box;
-    vertical-align: top;
-    width: 30px;
-    height: 100%;
-    line-height: 50px;
-    border-left: 1px solid #f2f2f2;
-    border-right: 1px solid #f2f2f2;
-    background-color: #f9f9f9;
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center;
-    cursor: pointer;
-    transition: all .1s;
-
-    &:hover{
-      background-color: #f5f5f5;
-    }
-  }
-  .month {
-    flex: 0 0 19px;
-    height: 50px;
-    background-color: #aaa;
-    color: #fff;
-    border-right: 1px solid #f2f2f2;
-    line-height: 20px;
-    font-size: 12px;
-    font-weight: 500;
-    text-align: center;
-    display: flexbox;
-    box-sizing: border-box;
-    padding: 5px 0;
-  }
 }
+
+.horizontal-calendar * {
+  margin: 0;
+  padding: 0;
+}
+
+.horizontal-calendar div {
+  box-sizing: border-box;
+}
+
+.horizontal-calendar .icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+  font-size: 16px;
+  color: #999;
+}
+
+.horizontal-calendar .date-list {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 60px);
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+}
+
+.horizontal-calendar .date-list-scroll {
+  width: 60000px;
+  height: 50px;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(0);
+}
+
+.horizontal-calendar .date-item {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  padding: 5px 2px;
+  line-height: 20px;
+  border-right: 1px solid #f2f2f2;
+  background-color: #fff;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.horizontal-calendar .date-item:hover {
+  background-color: #f8f8f8;
+}
+
+.horizontal-calendar .first-day {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAFN++nkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACoF8tmAAACJklEQVRoBd2ZjXHDIAxGk1536TSdNtM00zSyDw5sBJKQxA93sd1IH4/nOE6bPh+Px+/ngY4vtHIWXrWGF/RgDUcRa4jFUkNWvDbcitAAo6r5rDVgBjAr6n+so5SMC7wWYwHmTYtZAYowqjpnS2Fb9Sz0p0+9vtOfiMdx7ZxwDAUIJXwLUcJoqBZuhkphciiEe16q7PIJE1L36CXdmuBQTC/cViDU47nhhmMQZuKEsyAnfAtSw8UgJYwGW+FqsBZuBrEwKVgKk4PXMCsIYRiyW+cn2PWWPNCyjejOK0OdqXhaKTfeHlDIRmB4whp8A1qDUaAVuAnUBpOBWmA2sBcsBkrB3UAuWA1IBasDW2AzIAY2BwYw7MUfbekk3ONRH4tvzm98XCms//0p/HmDDyisyBMcoZ7gDOoFvkE9wEWoNRiFWoKrUCtwE2oBJkG1wWSoJpgF1QKzoRpgEbQXLIb2gLugUnA3VAJWgXLBalAOWBVKBatDKWATaAtsBq2BTaEY2BxaArtAr2A3aAp2hQIYxs+5892O+mvR1/KkHa+q9VeZI8SuzOzy3Vk4Ew1nYUfhouiOwlXRnYRJojsIs0RXFhaJrijcJbqSsIroCsKqojMLm4jOKGwqOpOwi+gMwq6iI4WHiI4QHirqKTyFqIfwVKKWwlOKWghPLaopvISohvBSoj3CS4pKhJcW5QhvIUoR3kq0JrylaEl4a9EgDPsh/8VLF+B5/A/jzYX1v2DlFgAAAABJRU5ErkJggg==) no-repeat;
+  background-size: 90% 90%;
+}
+
+.horizontal-calendar .first-day p {
+  color: #fff;
+  font-size: 12px;
+  width: 54%;
+  text-align: center;
+  line-height: 16px;
+  transform: scale(0.9);
+}
+
+.horizontal-calendar .date-item-date {
+  color: #212121;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.horizontal-calendar .date-item-day {
+  color: #999;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.horizontal-calendar .today .date-item-date {
+  color: #870000;
+}
+
+.horizontal-calendar .choosed-day .date-item-date,
+.horizontal-calendar .choosed-day .date-item-day {
+  color: #fff;
+}
+
+.horizontal-calendar .today-not-choosed {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  margin: 6px;
+  background-color: rgba(153, 153, 153, 0.3);
+  color: #870000;
+  font-size: 16px;
+  text-align: center;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.horizontal-calendar .left-arrow,
+.horizontal-calendar .right-arrow {
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+  width: 30px;
+  height: 100%;
+  line-height: 50px;
+  border-left: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  background-color: #f9f9f9;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  cursor: pointer;
+  transition: all .1s;
+}
+
+.horizontal-calendar .left-arrow:hover,
+.horizontal-calendar .right-arrow:hover {
+  background-color: #f5f5f5;
+}
+
+.horizontal-calendar .month {
+  flex: 0 0 19px;
+  height: 50px;
+  background-color: #aaa;
+  color: #fff;
+  border-right: 1px solid #f2f2f2;
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  display: flexbox;
+  box-sizing: border-box;
+  padding: 5px 0;
+}
+
 </style>
 
 
