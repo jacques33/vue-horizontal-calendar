@@ -820,6 +820,8 @@ span.strong-text {
 #app .white-block p,
 #app .white-block span {
   font-weight: 500;
+  color: #666;
+  font-size: 14px;
 }
 
 #app .white-block .hljs-comment {
