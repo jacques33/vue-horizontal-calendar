@@ -19,7 +19,7 @@
           v-for="(day,index) in dateList"
           v-bind:key="index"
           v-on:click="changeChoosedDay(day)"
-          v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,'today':day.dateFormat == today.dateFormat && lang == 'zh'}"
+          v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,'today':day.dateFormat == today.dateFormat && lang == 'zh', 'date-item-weekend': day.isWeekend}"
           v-bind:style="{'background-color': day.dateFormat == choosedDay.dateFormat?choosedItemColor:day.dateFormat == today.dateFormat?todayItemColor:''}"
         >
           <div>
@@ -289,6 +289,7 @@ export default {
         if (hasSpace > 50 * this.changeCount) {
           this.translateX = this.translateX - 50 * this.changeCount;
         } else {
+          
           // 2，如果由于最大日期限制，加载已经到头，则不再加载新的日期; 直接滚动到末端；
           if (!this.swipeRightMore) {
             this.translateX = (this.dateList.length - this.visibleDay) * -50;
@@ -363,13 +364,15 @@ export default {
           dateArray[key] = dateArray[key].substr(1, 1);
         }
       }
+      let week = new Date(timestamp).getDay();
       return {
         dateFormat: date,
         year: dateArray[0],
         month: dateArray[1],
         date: dateArray[2],
         timestamp: new Date(date).getTime(),
-        day: this.getWeekName(new Date(timestamp).getDay())
+        day: this.getWeekName(week),
+        isWeekend: week == 0 || week == 6
       };
     },
     // 返回“星期”的文字

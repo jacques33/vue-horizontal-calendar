@@ -46,6 +46,10 @@ const lang = {
         propDesc19: "'left'：左侧按钮点击事件<br>'right'：右侧按钮点击事件",
         propDesc20: "设置了最大/最小 日期时，点击左右按钮，滑动到最左边/右边时，会触发此事件。回调函数返回左右方向；当左右按钮滑动到尽头后，再次点击按钮，不会触发“swipeClick”点击事件",
         propDesc21: "'left'：左侧日期滑动到最小值事件<br>'right'：右侧日期滑动到最大值事件",
+        propDesc22: "周末日期样式的个性化配置：",
+        propDesc23: "基于可能出现的使用场景，对于周末日期提供个性化样式设置的通道；",
+        propDesc24: "你可以通过审查元素发现，周末的日期格子，会自带名为‘date-item-weekend’的class名；",
+        propDesc25: "你可以基于此class名称，在项目中使用任意的样式来覆盖组件原本的样式；包括但不限于日期背景色，文字颜色，边框，after/before伪元素样式……",
         
         eg1_detail: "默认的初始化选中日期为‘今天’，可自定义任意日期。",
         eg2_detail: "由于当前日历插件是宽度自适应的，所以设置‘maxDate’时，请考虑到右侧最后一个日期可能存在显示不完全的问题；你可以通过设置父组件容器的宽度，来使得最后一个日期显示完整；日期滑动到最大/最小值，会触发“swipeToEnd”事件。",
@@ -90,6 +94,10 @@ const lang = {
         propDesc19: "'left'：clicked left<br>'right'：clicked right",
         propDesc20: "When the maxDate/minDate date is set, this event will be triggered when you click the left and right buttons and slide to the far left / right. The callback function returns to the left and right directions. When the left and right buttons slide to the end, click the button again, and the 'swipeClick' event will not be triggered",
         propDesc21: "'left'：swiped to the minDate <br>'right'：swiped to the maxDate",
+        propDesc22: "Personalized configuration of weekend date style：",
+        propDesc23: "Based on the possible usage scenarios, the channel of personalized style setting is provided for weekend days；",
+        propDesc24: "You can check the elements and find that the date grid of the weekend comes with a class name called ‘date-item-weekend’；",
+        propDesc25: "Based on this class name, you can use any style in the project to override the original style of the component, including but not limited to background, text color, border, after/before pseudo-element style……",
 
         example: "e.g.",
         week: " ",

@@ -1,3 +1,5 @@
+// 此文件为demo页面
+
 <template>
   <div id="app">
     <div class="body">
@@ -193,8 +195,27 @@
             </tbody>
           </table>
         </div>
+        <!-- events -->
+        <h2 class="preview-title">ClassName</h2>
+        <div class="white-block">
+          <h4>{{currLang.propDesc22}}</h4>
+          <p>{{currLang.propDesc23}}</p>
+          <p>{{currLang.propDesc24}}</p>
+          <p>{{currLang.propDesc25}}</p>
+        </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
+        <!-- 0.8.0 -->
+        <div class="white-block change-log">
+          <h4>
+            0.8.0
+            <small class="log-date">2020-07-20</small>
+          </h4>
+          <h5>Feature</h5>
+          <ul>
+            <li>新增周末日期的个性化样式配置；</li>
+          </ul>
+        </div>
         <!-- 0.6.0 -->
         <div class="white-block change-log">
           <h4>

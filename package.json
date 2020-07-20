@@ -8,7 +8,7 @@
     "build": "vue-cli-service build",
     "lib": "vue-cli-service build --target lib --name vue-horizontal-calendar --dest lib src/components/index.js"
   },
-  "main":"lib/vue-horizontal-calendar.umd.min.js",
+  "main": "lib/vue-horizontal-calendar.umd.min.js",
   "author": {
     "name": "jacques"
   },
