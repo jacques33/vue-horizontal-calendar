@@ -395,11 +395,25 @@ export default {
         5: "Fr",
         6: "Sa"
       };
+
+      const dirt_es = {
+        0: "Do",
+        1: "Lu",
+        2: "Ma",
+        3: "Mi",
+        4: "Ju",
+        5: "Vi",
+        6: "Sa"
+      };
       // 如果是英文显示
-      if (this.lang === "en") {
-        return dirt_en[day];
+      switch(this.lang) {
+        case "en":
+          return dirt_en[day];
+        case "es":
+          return dirt_es[day];
+        default:
+          return dirt[day];
       }
-      return dirt[day];
     },
     // 输入时间戳，返回 YY/MM/DD 日期格式
     formatDateTime(timestamp) {
