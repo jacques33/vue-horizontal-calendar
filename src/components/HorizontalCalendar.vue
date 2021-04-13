@@ -405,12 +405,23 @@ export default {
         5: "Vi",
         6: "Sa"
       };
+      const dirt_it = {
+        0: "Do",
+        1: "Lu",
+        2: "Ma",
+        3: "Me",
+        4: "Gi",
+        5: "Ve",
+        6: "Sa"
+      };
       // 如果是英文显示
       switch(this.lang) {
         case "en":
           return dirt_en[day];
         case "es":
           return dirt_es[day];
+        case "it":
+          return dirt_it[day];
         default:
           return dirt[day];
       }
