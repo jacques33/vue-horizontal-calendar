@@ -30,5 +30,9 @@ export default {
 
 </script>
 ```
+### Language
+
+So far, it supports **Chinese**, **English**, **French**, **German**, **Italian**, **Portuguese** and **Spanish**
+
 ### doc & demos
 [click here](http://calendar.wantalone.com/).
