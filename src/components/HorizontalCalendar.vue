@@ -21,6 +21,7 @@
           v-on:click="changeChoosedDay(day)"
           v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,'today':day.dateFormat == today.dateFormat && lang == 'zh', 'date-item-weekend': day.isWeekend}"
           v-bind:style="{'background-color': day.dateFormat == choosedDay.dateFormat?choosedItemColor:day.dateFormat == today.dateFormat?todayItemColor:''}"
+          :data-date="day.month+'-'+day.date+'-'+day.year"
         >
           <div>
             <p class="date-item-day">{{day.day}}</p>
