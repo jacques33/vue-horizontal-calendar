@@ -307,7 +307,6 @@
         <p
           style="text-align:center;line-height:24px;font-size:15px;"
         >{{this.choosedDay2.dateFormat}} {{currLang.week}}{{this.choosedDay2.day | weekName}}</p>
-        ALLOOOO
         <vue-horizontal-calendar
           choosedDate="2021/07/01"
           v-bind:highlightedDates="['7-28-2021']"
