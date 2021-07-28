@@ -21,8 +21,10 @@
           v-on:click="changeChoosedDay(day)"
           v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,
           'today':day.dateFormat == today.dateFormat && lang == 'zh', 
-          'date-item-weekend': day.isWeekend}"
+          'date-item-weekend': day.isWeekend, 
+          'date-highlighted': highlightedDates.includes(day.dateFormat)}"
           v-bind:style="{'background-color': day.dateFormat == choosedDay.dateFormat?choosedItemColor:day.dateFormat == today.dateFormat?todayItemColor:''}"
+          :data-date="day.month+'-'+day.date+'-'+day.year"
         >
           <div>
             <p class="date-item-day">{{day.day}}</p>
@@ -59,6 +61,14 @@ export default {
       required: false,
       default: () => {
         return new Date();
+      }
+    },
+    // custom highlight days, format ['2021/07/01','2021/12/01']
+    highlightedDates: {
+      type: Array,
+      required: false,
+      default: () => {
+        return [];
       }
     },
     //点击左右箭头，切换的日期间隔天数

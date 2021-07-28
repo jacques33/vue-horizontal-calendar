@@ -81,6 +81,13 @@
                 <td>{{currLang.falseText}}</td>
               </tr>
               <tr>
+                <td>highlightedDates</td>
+                <td>{{currLang.propDesc28}}</td>
+                <td>Array</td>
+                <td>[]</td>
+                <td>{{currLang.falseText}}</td>
+              </tr>
+              <tr>
                 <td>choosedItemColor</td>
                 <td>{{currLang.propDesc6}}</td>
                 <td>String</td>
@@ -195,13 +202,16 @@
             </tbody>
           </table>
         </div>
-        <!-- events -->
+        <!-- Class -->
         <h2 class="preview-title">ClassName</h2>
         <div class="white-block">
           <h4>{{currLang.propDesc22}}</h4>
           <p>{{currLang.propDesc23}}</p>
           <p>{{currLang.propDesc24}}</p>
           <p>{{currLang.propDesc25}}</p>
+          <br>
+          <h4>{{currLang.propDesc26}}</h4>
+          <p>{{currLang.propDesc27}}</p>
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
@@ -308,7 +318,8 @@
           style="text-align:center;line-height:24px;font-size:15px;"
         >{{this.choosedDay2.dateFormat}} {{currLang.week}}{{this.choosedDay2.day | weekName}}</p>
         <vue-horizontal-calendar
-          choosedDate="2019/12/01"
+          choosedDate="2021/07/01"
+          v-bind:highlightedDates="['7-28-2021']"
           :lang="lang=='English'?'zh':'en'"
           v-on:change="dateChange2"
         ></vue-horizontal-calendar>
