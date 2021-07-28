@@ -19,8 +19,9 @@
           v-for="(day,index) in dateList"
           v-bind:key="index"
           v-on:click="changeChoosedDay(day)"
-          v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,'today':day.dateFormat == today.dateFormat && lang == 'zh', 'date-item-weekend': day.isWeekend}"
+          v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,'today':day.dateFormat == today.dateFormat && lang == 'zh', 'date-item-weekend': day.isWeekend, 'highlighted': highlightedDates.includes(day.month+'-'+day.date+'-'+day.year)}"
           v-bind:style="{'background-color': day.dateFormat == choosedDay.dateFormat?choosedItemColor:day.dateFormat == today.dateFormat?todayItemColor:''}"
+          :data-date="day.month+'-'+day.date+'-'+day.year"
         >
           <div>
             <p class="date-item-day">{{day.day}}</p>
@@ -57,6 +58,13 @@ export default {
       required: false,
       default: () => {
         return new Date();
+      }
+    },
+    highlightedDates: {
+      type: Array,
+      required: false,
+      default: () => {
+        return [];
       }
     },
     //点击左右箭头，切换的日期间隔天数
