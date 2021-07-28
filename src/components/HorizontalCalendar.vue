@@ -19,7 +19,9 @@
           v-for="(day,index) in dateList"
           v-bind:key="index"
           v-on:click="changeChoosedDay(day)"
-          v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,'today':day.dateFormat == today.dateFormat && lang == 'zh', 'date-item-weekend': day.isWeekend}"
+          v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,
+          'today':day.dateFormat == today.dateFormat && lang == 'zh', 
+          'date-item-weekend': day.isWeekend}"
           v-bind:style="{'background-color': day.dateFormat == choosedDay.dateFormat?choosedItemColor:day.dateFormat == today.dateFormat?todayItemColor:''}"
         >
           <div>
@@ -447,7 +449,7 @@ export default {
           return dirt[day];
       }
     },
-    // 输入时间戳，返回 YY/MM/DD 日期格式
+    // 输入时间戳，返回 YYYY/MM/DD 日期格式
     formatDateTime(timestamp) {
       if (!timestamp) return "";
       timestamp = parseInt(timestamp); // 防止传入字符串类型
