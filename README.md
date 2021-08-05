@@ -32,7 +32,7 @@ export default {
 ```
 ### Language
 
-So far, it supports **Chinese**, **English**, **French**, **German**, **Italian**, **Portuguese** and **Spanish**
+So far, it supports **Chinese**, **English**, **French**, **German**, **Italian** and **Spanish**
 
 ### doc & demos
 [click here](http://calendar.wantalone.com/).
