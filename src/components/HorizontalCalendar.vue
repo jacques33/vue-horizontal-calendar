@@ -1,7 +1,9 @@
 <template>
   <div
     class="horizontal-calendar"
-    v-bind:style="{'border-top':showBorderTop?'1px solid #f2f2f2':'none'}"
+    v-bind:style="{
+      'border-top': showBorderTop ? '1px solid #f2f2f2' : 'none',
+    }"
   >
     <span class="left-arrow" v-on:click="dateFlip(-1)">
       <slot name="leftIcon" v-if="this.$slots['leftIcon']"></slot>
@@ -12,31 +14,52 @@
     <div class="date-list">
       <div
         class="date-list-scroll"
-        :style="{'transform': 'translateX('+translateX+'px)','transition-duration': transitionDuration}"
+        :style="{
+          transform: 'translateX(' + translateX + 'px)',
+          'transition-duration': transitionDuration,
+        }"
       >
         <div
           class="date-item"
-          v-for="(day,index) in dateList"
+          v-for="(day, index) in dateList"
           v-bind:key="index"
           v-on:click="changeChoosedDay(day)"
-          v-bind:class="{'choosed-day': day.dateFormat == choosedDay.dateFormat,
-          'today':day.dateFormat == today.dateFormat && lang == 'zh', 
-          'date-item-weekend': day.isWeekend, 
-          'date-highlighted': highlightedDates.includes(day.dateFormat)}"
-          v-bind:style="{'background-color': day.dateFormat == choosedDay.dateFormat?choosedItemColor:day.dateFormat == today.dateFormat?todayItemColor:''}"
-          :data-date="day.month+'-'+day.date+'-'+day.year"
+          v-bind:class="{
+            'choosed-day': day.dateFormat == choosedDay.dateFormat,
+            today: day.dateFormat == today.dateFormat && lang == 'zh',
+            'date-item-weekend': day.isWeekend,
+            'date-highlighted': highlightedDates.includes(day.dateFormat),
+          }"
+          v-bind:style="{
+            'background-color':
+              day.dateFormat == choosedDay.dateFormat
+                ? choosedItemColor
+                : day.dateFormat == today.dateFormat
+                ? todayItemColor
+                : '',
+          }"
+          :data-date="day.month + '-' + day.date + '-' + day.year"
         >
           <div>
-            <p class="date-item-day">{{day.day}}</p>
+            <p class="date-item-day">{{ day.day }}</p>
             <p
               class="date-item-date"
               v-if="day.dateFormat == today.dateFormat && lang == 'zh'"
-              v-bind:style="{'color': day.dateFormat == choosedDay.dateFormat?'#fff':day.dateFormat == today.dateFormat?choosedItemColor:''}"
-            >今</p>
-            <p class="date-item-date" v-else>{{day.date}}</p>
+              v-bind:style="{
+                color:
+                  day.dateFormat == choosedDay.dateFormat
+                    ? '#fff'
+                    : day.dateFormat == today.dateFormat
+                    ? choosedItemColor
+                    : '',
+              }"
+            >
+              今
+            </p>
+            <p class="date-item-date" v-else>{{ day.date }}</p>
           </div>
           <div class="first-day" v-if="day.date == 1">
-            <p>{{day.month}}</p>
+            <p>{{ day.month }}</p>
           </div>
         </div>
       </div>
@@ -61,7 +84,7 @@ export default {
       required: false,
       default: () => {
         return new Date();
-      }
+      },
     },
     // custom highlight days, format ['2021/07/01','2021/12/01']
     highlightedDates: {
@@ -69,68 +92,68 @@ export default {
       required: false,
       default: () => {
         return [];
-      }
+      },
     },
     //点击左右箭头，切换的日期间隔天数
     swipeSpace: {
       type: [String, Number],
       required: false,
-      default: 7
+      default: 7,
     },
     // 当前默认选中的日期所处的位置，'left，center'，'right'，默认左
     choosedDatePos: {
       type: String,
       required: false,
-      default: "left"
+      default: "left",
     },
     // 最小日期，可接收格式如 ‘2019/12/01’ 或 ‘2019-12-01’ 或 标准UTC格式时间
     minDate: {
       type: [String, Date],
       required: false,
-      default: ""
+      default: "",
     },
     // 最大日期，可接收格式如 ‘2019/12/01’ 或 ‘2019-12-01’ 或 标准UTC格式时间
     maxDate: {
       type: [String, Date],
       required: false,
-      default: ""
+      default: "",
     },
     // 选中的日期背景色
     choosedItemColor: {
       type: String,
       required: false,
-      default: "rgb(13, 141, 224)"
+      default: "rgb(13, 141, 224)",
     },
     // ‘今天’未选中时的背景色
     todayItemColor: {
       type: String,
       required: false,
-      default: "rgba(13, 141, 224,.1)"
+      default: "rgba(13, 141, 224,.1)",
     },
     // 星期天的中文字，默认‘日’，可自定义，如‘天’
     sundayText: {
       type: String,
       required: false,
-      default: "日"
+      default: "日",
     },
     // 是否显示日历组件的顶部边框
     showBorderTop: {
       type: Boolean,
       required: false,
-      default: true
+      default: true,
     },
     // 屏幕尺寸改变时，是否重绘日历组件
     resizeable: {
       type: Boolean,
       required: false,
-      default: true
+      default: true,
     },
     // 语言；可选值：zh(中文)，en(英文)
     lang: {
       type: String,
       required: false,
-      default: "zh"
-    }
+      default: "zh",
+    },
   },
   data() {
     return {
@@ -157,7 +180,7 @@ export default {
       domWidth: 0, // 日历组件宽度
 
       swipeLeftMore: true, // 是否还能左滑
-      swipeRightMore: true // 是否还能右滑
+      swipeRightMore: true, // 是否还能右滑
     };
   },
   mounted() {
@@ -196,7 +219,7 @@ export default {
       this.visibleDay = n;
 
       // 如果单次滑动的天数，超过可显示的天数，则限制最大值为可显示天数；
-      if(this.changeCount > this.visibleDay){
+      if (this.changeCount > this.visibleDay) {
         this.changeCount = this.visibleDay;
       }
 
@@ -212,11 +235,11 @@ export default {
           firstDay.timestamp -
           parseInt(this.visibleDay / 2) * 1000 * 60 * 60 * 24;
         this.firstDay = this.formatOneDay(ts1);
-      } else if(this.choosedDatePos === "right"){
+      } else if (this.choosedDatePos === "right") {
         let ts2 =
           firstDay.timestamp -
-          parseInt(this.visibleDay-1) * 1000 * 60 * 60 * 24;
-          this.firstDay = this.formatOneDay(ts2);
+          parseInt(this.visibleDay - 1) * 1000 * 60 * 60 * 24;
+        this.firstDay = this.formatOneDay(ts2);
       } else {
         this.firstDay = firstDay;
       }
@@ -301,7 +324,6 @@ export default {
         if (hasSpace > 50 * this.changeCount) {
           this.translateX = this.translateX - 50 * this.changeCount;
         } else {
-          
           // 2，如果由于最大日期限制，加载已经到头，则不再加载新的日期; 直接滚动到末端；
           if (!this.swipeRightMore) {
             this.translateX = (this.dateList.length - this.visibleDay) * -50;
@@ -363,7 +385,7 @@ export default {
       }, 300);
 
       // 事件回调，返回滑动事件类型
-      this.$emit("swipeClick", type===1?'right':'left');
+      this.$emit("swipeClick", type === 1 ? "right" : "left");
     },
     // 格式化单个日期的数据
     formatOneDay(day) {
@@ -384,7 +406,7 @@ export default {
         date: dateArray[2],
         timestamp: new Date(date).getTime(),
         day: this.getWeekName(week),
-        isWeekend: week == 0 || week == 6
+        isWeekend: week == 0 || week == 6,
       };
     },
     // 返回“星期”的文字
@@ -396,7 +418,7 @@ export default {
         3: "三",
         4: "四",
         5: "五",
-        6: "六"
+        6: "六",
       };
       const dirt_en = {
         0: "Su",
@@ -405,7 +427,7 @@ export default {
         3: "We",
         4: "Th",
         5: "Fr",
-        6: "Sa"
+        6: "Sa",
       };
       const dirt_es = {
         0: "Do",
@@ -414,7 +436,7 @@ export default {
         3: "Mi",
         4: "Ju",
         5: "Vi",
-        6: "Sa"
+        6: "Sa",
       };
       const dirt_it = {
         0: "Do",
@@ -423,7 +445,7 @@ export default {
         3: "Me",
         4: "Gi",
         5: "Ve",
-        6: "Sa"
+        6: "Sa",
       };
       const dirt_fr = {
         0: "Di",
@@ -432,7 +454,7 @@ export default {
         3: "Me",
         4: "Je",
         5: "Ve",
-        6: "Sa"
+        6: "Sa",
       };
       const dirt_de = {
         0: "So",
@@ -441,10 +463,10 @@ export default {
         3: "Mi",
         4: "Do",
         5: "Fr",
-        6: "Sa"
+        6: "Sa",
       };
       // 如果是英文显示
-      switch(this.lang) {
+      switch (this.lang) {
         case "en":
           return dirt_en[day];
         case "es":
@@ -472,7 +494,7 @@ export default {
       }
       arr.unshift(fdt.getFullYear());
       return arr[0] + "/" + arr[1] + "/" + arr[2];
-    }
+    },
   },
   computed: {
     // 最小日期的0点时间戳
@@ -490,14 +512,17 @@ export default {
         return day.timestamp;
       }
       return null;
-    }
+    },
   },
-  watch:{
-    lang(n){
+  watch: {
+    lang(n) {
       this.lang = n;
       this.creatList();
-    }
-  }
+    },
+    choosedDate(newChoosedDate) {
+      this.choosedDay = this.formatOneDay(newChoosedDate);
+    },
+  },
 };
 </script>
 
@@ -570,7 +595,8 @@ export default {
   left: 0;
   width: 30px;
   height: 30px;
-  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAFN++nkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACoF8tmAAACJklEQVRoBd2ZjXHDIAxGk1536TSdNtM00zSyDw5sBJKQxA93sd1IH4/nOE6bPh+Px+/ngY4vtHIWXrWGF/RgDUcRa4jFUkNWvDbcitAAo6r5rDVgBjAr6n+so5SMC7wWYwHmTYtZAYowqjpnS2Fb9Sz0p0+9vtOfiMdx7ZxwDAUIJXwLUcJoqBZuhkphciiEe16q7PIJE1L36CXdmuBQTC/cViDU47nhhmMQZuKEsyAnfAtSw8UgJYwGW+FqsBZuBrEwKVgKk4PXMCsIYRiyW+cn2PWWPNCyjejOK0OdqXhaKTfeHlDIRmB4whp8A1qDUaAVuAnUBpOBWmA2sBcsBkrB3UAuWA1IBasDW2AzIAY2BwYw7MUfbekk3ONRH4tvzm98XCms//0p/HmDDyisyBMcoZ7gDOoFvkE9wEWoNRiFWoKrUCtwE2oBJkG1wWSoJpgF1QKzoRpgEbQXLIb2gLugUnA3VAJWgXLBalAOWBVKBatDKWATaAtsBq2BTaEY2BxaArtAr2A3aAp2hQIYxs+5892O+mvR1/KkHa+q9VeZI8SuzOzy3Vk4Ew1nYUfhouiOwlXRnYRJojsIs0RXFhaJrijcJbqSsIroCsKqojMLm4jOKGwqOpOwi+gMwq6iI4WHiI4QHirqKTyFqIfwVKKWwlOKWghPLaopvISohvBSoj3CS4pKhJcW5QhvIUoR3kq0JrylaEl4a9EgDPsh/8VLF+B5/A/jzYX1v2DlFgAAAABJRU5ErkJggg==) no-repeat;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAFN++nkAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAPKADAAQAAAABAAAAPAAAAACoF8tmAAACJklEQVRoBd2ZjXHDIAxGk1536TSdNtM00zSyDw5sBJKQxA93sd1IH4/nOE6bPh+Px+/ngY4vtHIWXrWGF/RgDUcRa4jFUkNWvDbcitAAo6r5rDVgBjAr6n+so5SMC7wWYwHmTYtZAYowqjpnS2Fb9Sz0p0+9vtOfiMdx7ZxwDAUIJXwLUcJoqBZuhkphciiEe16q7PIJE1L36CXdmuBQTC/cViDU47nhhmMQZuKEsyAnfAtSw8UgJYwGW+FqsBZuBrEwKVgKk4PXMCsIYRiyW+cn2PWWPNCyjejOK0OdqXhaKTfeHlDIRmB4whp8A1qDUaAVuAnUBpOBWmA2sBcsBkrB3UAuWA1IBasDW2AzIAY2BwYw7MUfbekk3ONRH4tvzm98XCms//0p/HmDDyisyBMcoZ7gDOoFvkE9wEWoNRiFWoKrUCtwE2oBJkG1wWSoJpgF1QKzoRpgEbQXLIb2gLugUnA3VAJWgXLBalAOWBVKBatDKWATaAtsBq2BTaEY2BxaArtAr2A3aAp2hQIYxs+5892O+mvR1/KkHa+q9VeZI8SuzOzy3Vk4Ew1nYUfhouiOwlXRnYRJojsIs0RXFhaJrijcJbqSsIroCsKqojMLm4jOKGwqOpOwi+gMwq6iI4WHiI4QHirqKTyFqIfwVKKWwlOKWghPLaopvISohvBSoj3CS4pKhJcW5QhvIUoR3kq0JrylaEl4a9EgDPsh/8VLF+B5/A/jzYX1v2DlFgAAAABJRU5ErkJggg==)
+    no-repeat;
   background-size: 90% 90%;
 }
 
@@ -632,7 +658,7 @@ export default {
   font-weight: 500;
   text-align: center;
   cursor: pointer;
-  transition: all .1s;
+  transition: all 0.1s;
 }
 
 .horizontal-calendar .left-arrow:hover,
@@ -654,7 +680,4 @@ export default {
   box-sizing: border-box;
   padding: 5px 0;
 }
-
 </style>
-
-
