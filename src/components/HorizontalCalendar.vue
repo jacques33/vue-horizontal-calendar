@@ -26,7 +26,7 @@
           v-on:click="changeChoosedDay(day)"
           v-bind:class="{
             'choosed-day': day.dateFormat == choosedDay.dateFormat,
-            today: day.dateFormat == today.dateFormat && lang == 'zh',
+            'today': day.dateFormat == today.dateFormat && lang == 'zh',
             'date-item-weekend': day.isWeekend,
             'date-highlighted': highlightedDates.includes(day.dateFormat),
           }"

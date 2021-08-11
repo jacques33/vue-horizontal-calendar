@@ -215,6 +215,30 @@
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
+        <!-- 0.9.1 -->
+        <div class="white-block change-log">
+          <h4>
+            0.9.1
+            <small class="log-date">2021-08-11</small>
+          </h4>
+          <h5>Feature</h5>
+          <ul>
+            <li>新增支持当前选中日期的动态变更；(choosedDate属性值)</li>
+            <li>Add watch 'choosedDate' for changes to programatically update calendar.</li>
+          </ul>
+        </div>
+        <!-- 0.9.0 -->
+        <div class="white-block change-log">
+          <h4>
+            0.9.0
+            <small class="log-date">2021-07-20</small>
+          </h4>
+          <h5>Feature</h5>
+          <ul>
+            <li>新增自定义日期的个性化样式配置；</li>
+            <li>Add new prop 'highlightedDates'.</li>
+          </ul>
+        </div>
         <!-- 0.8.0 -->
         <div class="white-block change-log">
           <h4>
@@ -224,6 +248,7 @@
           <h5>Feature</h5>
           <ul>
             <li>新增周末日期的个性化样式配置；</li>
+            <li>Add new ClassName 'date-item-weekend'.</li>
           </ul>
         </div>
         <!-- 0.6.0 -->
