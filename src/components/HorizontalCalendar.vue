@@ -465,6 +465,15 @@ export default {
         5: "Fr",
         6: "Sa",
       };
+      const dirt_sk = {
+        0: "Ne",
+        1: "Po",
+        2: "Ut",
+        3: "St",
+        4: "Št",
+        5: "Pi",
+        6: "So",
+      };
       // 如果是英文显示
       switch (this.lang) {
         case "en":
