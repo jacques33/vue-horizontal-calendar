@@ -486,6 +486,8 @@ export default {
           return dirt_fr[day];
         case "de":
           return dirt_de[day];
+        case "sk":
+          return dirt_sk[day];
         default:
           return dirt[day];
       }
