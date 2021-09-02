@@ -474,6 +474,15 @@ export default {
         5: "Pi",
         6: "So",
       };
+      const dirt_cs = {
+        0: "Ne",
+        1: "Po",
+        2: "Út",
+        3: "St",
+        4: "Čt",
+        5: "Pá",
+        6: "So",
+      };
       // 如果是英文显示
       switch (this.lang) {
         case "en":
@@ -488,6 +497,8 @@ export default {
           return dirt_de[day];
         case "sk":
           return dirt_sk[day];
+        case "cs":
+          return dirt_cs[day];
         default:
           return dirt[day];
       }
