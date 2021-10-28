@@ -6,10 +6,11 @@
     }"
   >
     <span class="left-arrow" v-on:click="dateFlip(-1)">
-      <slot name="leftIcon" v-if="this.$slots['leftIcon']"></slot>
-      <svg v-else class="icon" aria-hidden="true">
-        <use xlink:href="#jac-left" />
-      </svg>
+      <slot name="leftIcon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#jac-left" />
+        </svg>
+      </slot>
     </span>
     <div class="date-list">
       <div
@@ -40,35 +41,40 @@
           }"
           :data-date="day.month + '-' + day.date + '-' + day.year"
         >
-          <div>
-            <p class="date-item-day">{{ day.day }}</p>
-            <p
-              class="date-item-date"
-              v-if="day.dateFormat == today.dateFormat && lang == 'zh'"
-              v-bind:style="{
-                color:
-                  day.dateFormat == choosedDay.dateFormat
-                    ? '#fff'
-                    : day.dateFormat == today.dateFormat
-                    ? choosedItemColor
-                    : '',
-              }"
-            >
-              今
-            </p>
-            <p class="date-item-date" v-else>{{ day.date }}</p>
-          </div>
-          <div class="first-day" v-if="day.date == 1">
-            <p>{{ day.month }}</p>
-          </div>
+          <slot :day="day" :today="today">
+            <template>
+              <div>
+                <p class="date-item-day">{{ day.day }}</p>
+                <p
+                  class="date-item-date"
+                  v-if="day.dateFormat == today.dateFormat && lang == 'zh'"
+                  v-bind:style="{
+                    color:
+                      day.dateFormat == choosedDay.dateFormat
+                        ? '#fff'
+                        : day.dateFormat == today.dateFormat
+                        ? choosedItemColor
+                        : '',
+                  }"
+                >
+                  今
+                </p>
+                <p class="date-item-date" v-else>{{ day.date }}</p>
+              </div>
+              <div class="first-day" v-if="day.date == 1">
+                <p>{{ day.month }}</p>
+              </div>
+            </template>
+          </slot>
         </div>
       </div>
     </div>
     <span class="right-arrow" v-on:click="dateFlip(1)">
-      <slot name="rightIcon" v-if="this.$slots['rightIcon']"></slot>
-      <svg v-else class="icon" aria-hidden="true">
-        <use xlink:href="#jac-right" />
-      </svg>
+      <slot name="rightIcon">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#jac-right" />
+        </svg>
+      </slot>
     </span>
   </div>
 </template>
