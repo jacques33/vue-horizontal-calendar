@@ -53,6 +53,7 @@ const lang = {
         propDesc26: "‘date-highlighted’  自定义日期：",
         propDesc27: "配合props的highlightedDates属性使用，使用方式同上",
         propDesc28: "自定义高亮日期：支持字符串数组，字符串格式为YYYY/MM/DD，如['2021/07/01']；匹配的日期，会有class‘date-highlighted’，可以根据class名，自行定义样式。",
+        propDesc29: "自定义日期格子的内容。作用域插槽参数：{day, today, choosedDay}，每个属性都是一个日期对象，格式参考change事件的返回值",
 
         eg1_detail: "默认的初始化选中日期为‘今天’，可自定义任意日期。",
         eg2_detail: "由于当前日历插件是宽度自适应的，所以设置‘maxDate’时，请考虑到右侧最后一个日期可能存在显示不完全的问题；你可以通过设置父组件容器的宽度，来使得最后一个日期显示完整；日期滑动到最大/最小值，会触发“swipeToEnd”事件。",
@@ -104,6 +105,7 @@ const lang = {
         propDesc26: "‘date-highlighted’  Personalized configuration of custom date style：",
         propDesc27: "The date that props highlightedDates include，will have class named 'date-highlighted'",
         propDesc28: "Custom highlight dates; only surport date format as YYYY/MM/DD，for exzample ['2021/07/01','2021/12/31']；if the date is in Array，it will has class ‘date-highlighted’，so you can customize the style by the class.",
+        propDesc29: "custom date block content。Scope slot parameters：{day, today, choosedDay}，Each parameter is a date object whose format refers to the return value of the change event",
 
         example: "e.g.",
         week: " ",

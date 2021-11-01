@@ -41,7 +41,7 @@
           }"
           :data-date="day.month + '-' + day.date + '-' + day.year"
         >
-          <slot :day="day" :today="today">
+          <slot :day="day" :today="today" :choosedDay="choosedDay">
             <template>
               <div>
                 <p class="date-item-day">{{ day.day }}</p>

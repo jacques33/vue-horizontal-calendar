@@ -144,6 +144,10 @@
             </thead>
             <tbody>
               <tr>
+                <td>default</td>
+                <td>{{currLang.propDesc29}}</td>
+              </tr>
+              <tr>
                 <td>leftIcon</td>
                 <td>{{currLang.propDesc12}}</td>
               </tr>
@@ -215,6 +219,18 @@
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
+        <!-- 0.1.0 -->
+        <div class="white-block change-log">
+          <h4>
+            0.1.0
+            <small class="log-date">2021-11-01</small>
+          </h4>
+          <h5>Feature</h5>
+          <ul>
+            <li>新增支持日期格子的作用域插槽</li>
+            <li>Add default slot for date block content.</li>
+          </ul>
+        </div>
         <!-- 0.9.1 -->
         <div class="white-block change-log">
           <h4>
