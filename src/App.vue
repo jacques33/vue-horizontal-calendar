@@ -219,10 +219,10 @@
         </div>
         <!-- change log -->
         <h2 class="preview-title">Change Log</h2>
-        <!-- 0.1.0 -->
+        <!-- 1.0.0 -->
         <div class="white-block change-log">
           <h4>
-            0.1.0
+            1.0.0
             <small class="log-date">2021-11-01</small>
           </h4>
           <h5>Feature</h5>
