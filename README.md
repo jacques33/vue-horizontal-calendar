@@ -1,6 +1,6 @@
 # vue-horizontal-calendar
 
-a horizontal calendar component for Vue.js :computer:
+a horizontal calendar component for Vue.js(only for 2.x) :computer:
 
 ### install
 ```
