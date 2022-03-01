@@ -2,6 +2,10 @@
 
 a horizontal calendar component for Vue.js(only for 2.x) :computer:
 
+### doc & demos
+[click here](http://calendar.wantalone.com/).
+
+
 ### install
 ```
 npm install vue-horizontal-calendar -S
@@ -34,5 +38,3 @@ export default {
 
 So far, it supports **Chinese**, **English**, **French**, **German**, **Italian** , **Spanish** , **Slovak**, **Czech**.
 
-### doc & demos
-[click here](http://calendar.wantalone.com/).
