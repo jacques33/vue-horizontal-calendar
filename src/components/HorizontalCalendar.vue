@@ -200,12 +200,13 @@ export default {
      * @@date 2019.12.06
      * @@desc 监听屏幕宽度变化事件，动态更新日期条
      * 因为onresize事件在一次拖拽行为中，会调用n多次；为了不必要的数据更替和界面渲染，此处定义a,b两个变量，通过延时判断，来消除这种无谓的消耗
+     * debounce
      * */
     if (this.resizeable) {
       let a = 1;
       window.onresize = () => {
         a++;
-        let b = a;
+        const b = a;
         setTimeout(() => {
           if (b == a) {
             this.init();
@@ -236,14 +237,14 @@ export default {
       this.choosedDay = this.formatOneDay(this.choosedDate);
 
       // 第一天
-      let firstDay = this.formatOneDay(this.choosedDate);
+      const firstDay = this.formatOneDay(this.choosedDate);
       if (this.choosedDatePos === "center") {
-        let ts1 =
+        const ts1 =
           firstDay.timestamp -
           parseInt(this.visibleDay / 2) * 1000 * 60 * 60 * 24;
         this.firstDay = this.formatOneDay(ts1);
       } else if (this.choosedDatePos === "right") {
-        let ts2 =
+        const ts2 =
           firstDay.timestamp -
           parseInt(this.visibleDay - 1) * 1000 * 60 * 60 * 24;
         this.firstDay = this.formatOneDay(ts2);
@@ -257,11 +258,11 @@ export default {
     },
     // 初始化，生成一列日期
     creatList() {
-      let list = [];
-      let firstDayTime = this.firstDay.timestamp;
+      const list = [];
+      const firstDayTime = this.firstDay.timestamp;
       for (let i = 0; i < this.visibleDay; i++) {
-        let timestamp = firstDayTime + 1000 * 60 * 60 * 24 * i; //用第一天的时间戳+24小时*i天
-        let info = this.formatOneDay(new Date(timestamp));
+        const timestamp = firstDayTime + 1000 * 60 * 60 * 24 * i; //用第一天的时间戳+24小时*i天
+        const info = this.formatOneDay(new Date(timestamp));
         list.push(info);
       }
       this.dateList = list;
@@ -294,13 +295,13 @@ export default {
           this.$emit("swipeToEnd", "left");
         } else {
           //,3，以上条件都不满足，则说明左侧已经没有可展示的日期了，要新增数据
-          let fdt = this.dateList[0].timestamp;
-          let list = [];
+          const fdt = this.dateList[0].timestamp;
+          const list = [];
           let i;
           for (i = 0; i < this.changeCount; i++) {
             //用数组第一项的时间戳 - 24小时*(i+1)天
-            let timestamp = fdt - 1000 * 60 * 60 * 24 * (i + 1);
-            let info = this.formatOneDay(new Date(timestamp));
+            const timestamp = fdt - 1000 * 60 * 60 * 24 * (i + 1);
+            const info = this.formatOneDay(new Date(timestamp));
             // 如果存在最小日期限制,且当前这个日期小于最小限制，则停止循环
             if (this.minDate && info.timestamp < this.minDateTimestamp) {
               this.swipeLeftMore = false;
@@ -324,7 +325,7 @@ export default {
         // 右边按钮
       } else if (type === 1) {
         // 判断右侧是否有可滚动的日期，有的话则直接滚动
-        let hasSpace =
+        const hasSpace =
           this.dateList.length * this.rectWidth - this.domWidth + this.translateX;
 
         // 1，有完整可滚动的日期，则直接滚动
@@ -338,7 +339,7 @@ export default {
             return;
           }
           // 3，以上都不满足，则需要生成新日期，然后滚动
-          let fdt = this.dateList[this.dateList.length - 1].timestamp;
+          const fdt = this.dateList[this.dateList.length - 1].timestamp;
           let i;
           for (i = 0; i < this.changeCount; i++) {
             //用数组第一天的时间戳 + 24小时*(i+1)天
@@ -367,11 +368,11 @@ export default {
        */
       setTimeout(() => {
         // 数据变更后的部分数据
-        let afterChangeX = this.translateX;
-        let afterChangeLen = this.dateList.length;
+        const afterChangeX = this.translateX;
+        const afterChangeLen = this.dateList.length;
         // 如果x前后都相等，则计算当前日期列表的长度变化
         if (beforeChangeX === afterChangeX) {
-          let changeDay = afterChangeLen - beforeChangeLen;
+          const changeDay = afterChangeLen - beforeChangeLen;
           // 如果点击之后日历没变化(当最大或最小值存在的时候，就可能出现此种情况)，则不往下执行
           if (changeDay === 0) return;
           this.firstDay = this.formatOneDay(
@@ -380,7 +381,7 @@ export default {
             )
           );
         } else {
-          let changeDay = (afterChangeX - beforeChangeX) / this.rectWidth;
+          const changeDay = (afterChangeX - beforeChangeX) / this.rectWidth;
           this.firstDay = this.formatOneDay(
             this.formatDateTime(
               this.firstDay.timestamp - 3600 * 1000 * 24 * changeDay
@@ -396,16 +397,16 @@ export default {
     },
     // 格式化单个日期的数据
     formatOneDay(day) {
-      let timestamp = new Date(day).getTime();
-      let date = this.formatDateTime(timestamp); // 2019/06/01
-      let dateArray = date.split("/"); // [2019,06,01]
+      const timestamp = new Date(day).getTime();
+      const date = this.formatDateTime(timestamp); // 2019/06/01
+      const dateArray = date.split("/"); // [2019,06,01]
       // 去掉补位的0
       for (const key in dateArray) {
         if (dateArray[key].indexOf("0") == 0) {
           dateArray[key] = dateArray[key].substr(1, 1);
         }
       }
-      let week = new Date(timestamp).getDay();
+      const week = new Date(timestamp).getDay();
       return {
         dateFormat: date,
         year: dateArray[0],
@@ -514,8 +515,8 @@ export default {
     formatDateTime(timestamp) {
       if (!timestamp) return "";
       timestamp = parseInt(timestamp); // 防止传入字符串类型
-      let fdt = new Date(timestamp);
-      let arr = [fdt.getMonth() + 1, fdt.getDate()];
+      const fdt = new Date(timestamp);
+      const arr = [fdt.getMonth() + 1, fdt.getDate()];
       for (let key in arr) {
         if (arr[key] < 10) {
           arr[key] = "0" + arr[key];
@@ -529,7 +530,7 @@ export default {
     // 最小日期的0点时间戳
     minDateTimestamp() {
       if (this.minDate) {
-        let day = this.formatOneDay(this.minDate);
+        const day = this.formatOneDay(this.minDate);
         return day.timestamp;
       }
       return null;
@@ -537,7 +538,7 @@ export default {
     // 最大日期的0点时间戳
     maxDateTimestamp() {
       if (this.maxDate) {
-        let day = this.formatOneDay(this.maxDate);
+        const day = this.formatOneDay(this.maxDate);
         return day.timestamp;
       }
       return null;
