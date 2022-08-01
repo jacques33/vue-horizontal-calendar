@@ -359,8 +359,8 @@
           style="text-align:center;line-height:24px;font-size:15px;"
         >{{this.choosedDay2.dateFormat}} {{currLang.week}}{{this.choosedDay2.day | weekName}}</p>
         <vue-horizontal-calendar
-          choosedDate="2021/07/01"
-          v-bind:highlightedDates="['7-28-2021']"
+          :choosedDate="todayStr"
+          :highlightedDates="[dateStr1]"
           :lang="lang=='English'?'zh':'en'"
           v-on:change="dateChange2"
         ></vue-horizontal-calendar>
@@ -378,10 +378,10 @@
         </h2>
         <vue-horizontal-calendar
           :lang="lang=='English'?'zh':'en'"
-          choosedDate="2019/12/10"
+          :choosedDate="todayStr"
           choosedDatePos="center"
-          minDate="2019/12/01"
-          maxDate="2019/12/30"
+          :minDate="dateStr2"
+          :maxDate="dateStr3"
           v-on:change="dateChange3"
           v-on:swipeToEnd="swipeToEnd"
         ></vue-horizontal-calendar>
@@ -515,12 +515,17 @@ export default {
   data() {
     return {
       // 语言
-      lang: "English",
+      lang: "中文", // 中文 English
       chinese: langBag.zh,
       english: langBag.en,
-      currLang: langBag.zh,
+      currLang: langBag.en, // default lang English
 
       codeList: codeSample,
+
+      todayStr: '2022/08/01',
+      dateStr1: '',
+      dateStr2: '',
+      dateStr3: '',
 
       choosedDay1: {
         dateFormat: ""
@@ -546,6 +551,16 @@ export default {
       }
     };
   },
+  created() {
+    this.todayStr = this.getDateStr()
+    const ts = new Date().getTime()
+    // 7天后
+    this.dateStr1 = this.getDateStr(new Date(ts + 3600*24*1000*7))
+    // 15天前
+    this.dateStr2 = this.getDateStr(new Date(ts - 3600*24*1000*15))
+    // 15天后
+    this.dateStr3 = this.getDateStr(new Date(ts + 3600*24*1000*15))
+  },
   methods: {
     dateChange1(day) {
       this.choosedDay1 = day;
@@ -565,9 +580,9 @@ export default {
 
     swipeToEnd(direction) {
       if(direction === "left"){
-        alert("已滑动到最小日期！")
+        alert(this.currLang.egTip1)
       }else if(direction === "right"){
-        alert("已滑动到最大日期！")
+        alert(this.currLang.egTip2)
       }
     },
     firstDayChange(day) {
@@ -594,6 +609,16 @@ export default {
         this.lang = "English";
         this.currLang = this.chinese;
       }
+    },
+    // 转换日期为字符串格式 "2022/08/01"
+    getDateStr(date) {
+      date = date || new Date()
+      return (date.getFullYear() + "/" + this.formatDateNumber(date.getMonth() + 1) + "/" + this.formatDateNumber(date.getDate()))
+    },
+    // 不足10补0
+    formatDateNumber(num) {
+      if(Number(num) < 10) return `0${num}`
+      return num
     }
   },
   computed: {
@@ -612,7 +637,6 @@ export default {
         monday.getDate()
       );
     },
-
     currLangDemo() {
       if (this.lang === "English") {
         return this.codeList[4];

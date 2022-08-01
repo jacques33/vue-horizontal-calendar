@@ -24,6 +24,8 @@ const lang = {
         eg4: "设置语言",
         eg5: "自定义颜色、样式",
         eg6: "用周历的方式展示",
+        egTip1: "已滑动到最小日期！",
+        egTip2: "已滑动到最大日期！",
 
         propDesc1: "初始化选中的日期；可接收格式如‘2019/12/01’或‘2019-12-01’或 Date对象实例",
         propDesc2: "点击左右箭头，切换的日期间隔天数；最大值不超过当前组件可显示的天数",
@@ -117,6 +119,8 @@ const lang = {
         eg4: "set language",
         eg5: "set custom colors,icons,and styles",
         eg6: "display by weekly calendar",
+        egTip1: "Has slid to the minimum date!",
+        egTip2: "Has slid to the maximum  date!",
 
         eg1_detail: "The default choosedDate is 'today' (new Date())，you can set any date as the choosedDate。",
         eg2_detail: "Because the calendar component is width adaptive, when setting prop 'maxdate', please consider that the last date on the right may not be displayed completely; you can make the last date display complete by setting the width of the parent component container. when swipe to the max or min date (if it has been set), the event 'swipeToEnd' will be triggered.",
