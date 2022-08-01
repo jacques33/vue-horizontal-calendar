@@ -174,15 +174,16 @@ export default {
       // }
 
       firstDay: {}, //当前显示的第一个日期
-      visibleDay: "", // 计算屏幕可放置的日期方块的数量
+      visibleDay: '', // 计算屏幕可放置的日期方块的数量
       changeCount: Number(this.swipeSpace), //点击左右箭头，增量的日期数量，默认为7天
       choosedDay: {}, // 当前选中的日期
       dateList: [], // 当前的日期列表
       today: {}, // 今天
 
       // 动画数据
-      translateX: -this.changeCount * 50,
-      transitionDuration: "300ms",
+      rectWidth: 50,
+      translateX: -this.changeCount * this.rectWidth,
+      transitionDuration: '300ms',
       domWidth: 0, // 日历组件宽度
 
       swipeLeftMore: true, // 是否还能左滑
@@ -217,8 +218,8 @@ export default {
     init() {
       // 根据屏幕宽度，判断可显示的日期方块的数量
       this.domWidth = this.$el.scrollWidth;
-      let n = (this.domWidth - 60) / 50;
-      // 可显示日期数量 = 可完全显示的数量+1 （除非div的宽度刚刚好被50整除）
+      let n = (this.domWidth - 60) / this.rectWidth;
+      // 可显示日期数量 = 可完全显示的数量+1 （除非div的宽度刚刚好被rectWidth整除）
       if (n % 1 != 0) {
         n = parseInt(n) + 1;
       }
@@ -278,14 +279,14 @@ export default {
     // 左右滑动翻页 1：往后加载7天，-1：往前加载7天
     dateFlip(type) {
       // 数据变更前的部分数据
-      let beforeChangeX = this.translateX;
-      let beforeChangeLen = this.dateList.length;
+      const beforeChangeX = this.translateX;
+      const beforeChangeLen = this.dateList.length;
 
       // 左边按钮
       if (type === -1) {
-        // 1，如果此时translateX< 单次滚动的日期长度，说明左侧有可滚动的日期，不需要生成更多日期
-        if (this.translateX <= -50 * this.changeCount) {
-          this.translateX = this.translateX + 50 * this.changeCount;
+        // 1，如果此时translateX < 单次滚动的日期长度，说明左侧有可滚动的日期，不需要生成更多日期
+        if (this.translateX <= -(this.rectWidth * this.changeCount)) {
+          this.translateX = this.translateX + this.rectWidth * this.changeCount;
 
           // 2，如果由于最小日期限制，加载已经到头，则不再加载新的日期,直接滚动到最左边
         } else if (!this.swipeLeftMore) {
@@ -312,27 +313,27 @@ export default {
           this.transitionDuration = "0ms";
           this.dateList.unshift(...list);
           // i 表示新增的日期数量； 因为循环可能会被最大最小值中断，所以 i 相对于 changeCount 更准确
-          this.translateX = this.translateX - 50 * i;
+          this.translateX = this.translateX - this.rectWidth * i;
 
           // 异步重置过渡效果，位移div
           setTimeout(() => {
             this.transitionDuration = "300ms";
-            this.translateX = this.translateX + 50 * i;
+            this.translateX = this.translateX + this.rectWidth * i;
           }, 1);
         }
         // 右边按钮
       } else if (type === 1) {
         // 判断右侧是否有可滚动的日期，有的话则直接滚动
         let hasSpace =
-          this.dateList.length * 50 - this.domWidth + this.translateX;
+          this.dateList.length * this.rectWidth - this.domWidth + this.translateX;
 
         // 1，有完整可滚动的日期，则直接滚动
-        if (hasSpace > 50 * this.changeCount) {
-          this.translateX = this.translateX - 50 * this.changeCount;
+        if (hasSpace > this.rectWidth * this.changeCount) {
+          this.translateX = this.translateX - this.rectWidth * this.changeCount;
         } else {
           // 2，如果由于最大日期限制，加载已经到头，则不再加载新的日期; 直接滚动到末端；
           if (!this.swipeRightMore) {
-            this.translateX = (this.dateList.length - this.visibleDay) * -50;
+            this.translateX = (this.dateList.length - this.visibleDay) * -this.rectWidth;
             this.$emit("swipeToEnd", "right");
             return;
           }
@@ -353,9 +354,9 @@ export default {
           }
           // 如果i小于固定移动单位，则说明由于最大日期限制，最后位移的单位并不完全充足；此时i的值，受最小日期和屏幕宽度以及移动距离影响，是不定的值，因此只能借助以下计算方式。
           if (i < this.changeCount) {
-            this.translateX = (this.dateList.length - this.visibleDay) * -50;
+            this.translateX = (this.dateList.length - this.visibleDay) * -this.rectWidth;
           } else {
-            this.translateX = this.translateX - 50 * i;
+            this.translateX = this.translateX - this.rectWidth * i;
           }
         }
       }
@@ -379,7 +380,7 @@ export default {
             )
           );
         } else {
-          let changeDay = (afterChangeX - beforeChangeX) / 50;
+          let changeDay = (afterChangeX - beforeChangeX) / this.rectWidth;
           this.firstDay = this.formatOneDay(
             this.formatDateTime(
               this.firstDay.timestamp - 3600 * 1000 * 24 * changeDay
@@ -417,7 +418,7 @@ export default {
     },
     // 返回“星期”的文字
     getWeekName(day) {
-      const dirt = {
+      const dict = {
         0: this.sundayText,
         1: "一",
         2: "二",
@@ -426,7 +427,7 @@ export default {
         5: "五",
         6: "六",
       };
-      const dirt_en = {
+      const dict_en = {
         0: "Su",
         1: "Mo",
         2: "Tu",
@@ -435,7 +436,7 @@ export default {
         5: "Fr",
         6: "Sa",
       };
-      const dirt_es = {
+      const dict_es = {
         0: "Do",
         1: "Lu",
         2: "Ma",
@@ -444,7 +445,7 @@ export default {
         5: "Vi",
         6: "Sa",
       };
-      const dirt_it = {
+      const dict_it = {
         0: "Do",
         1: "Lu",
         2: "Ma",
@@ -453,7 +454,7 @@ export default {
         5: "Ve",
         6: "Sa",
       };
-      const dirt_fr = {
+      const dict_fr = {
         0: "Di",
         1: "Lu",
         2: "Ma",
@@ -462,7 +463,7 @@ export default {
         5: "Ve",
         6: "Sa",
       };
-      const dirt_de = {
+      const dict_de = {
         0: "So",
         1: "Mo",
         2: "Di",
@@ -471,7 +472,7 @@ export default {
         5: "Fr",
         6: "Sa",
       };
-      const dirt_sk = {
+      const dict_sk = {
         0: "Ne",
         1: "Po",
         2: "Ut",
@@ -480,7 +481,7 @@ export default {
         5: "Pi",
         6: "So",
       };
-      const dirt_cs = {
+      const dict_cs = {
         0: "Ne",
         1: "Po",
         2: "Út",
@@ -492,21 +493,21 @@ export default {
       // 如果是英文显示
       switch (this.lang) {
         case "en":
-          return dirt_en[day];
+          return dict_en[day];
         case "es":
-          return dirt_es[day];
+          return dict_es[day];
         case "it":
-          return dirt_it[day];
+          return dict_it[day];
         case "fr":
-          return dirt_fr[day];
+          return dict_fr[day];
         case "de":
-          return dirt_de[day];
+          return dict_de[day];
         case "sk":
-          return dirt_sk[day];
+          return dict_sk[day];
         case "cs":
-          return dirt_cs[day];
+          return dict_cs[day];
         default:
-          return dirt[day];
+          return dict[day];
       }
     },
     // 输入时间戳，返回 YYYY/MM/DD 日期格式
